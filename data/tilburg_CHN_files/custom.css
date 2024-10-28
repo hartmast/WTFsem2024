@@ -1,0 +1,124 @@
+/** Below css was generated from style-template.scss */
+a, a:hover, a:focus, a:active,
+.btn-link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active,
+.text-primary,
+.text-primary:hover,
+.text-primary:focus,
+.text-primary:active {
+  color: #337ab7;
+}
+
+.pagination > li:not(.disabled) > span,
+.pagination > li:not(.disabled) > a {
+  color: #337ab7 !important;
+}
+.pagination > li.active > span,
+.pagination > li.active > a, .pagination > li.current > span,
+.pagination > li.current > a {
+  color: white !important;
+  background: #337ab7 !important;
+  border-color: #337ab7 !important;
+}
+.pagination > li.active > input, .pagination > li.current > input {
+  color: #337ab7 !important;
+  border-color: #337ab7 !important;
+}
+.pagination > li.active > .fa, .pagination > li.current > .fa {
+  color: #337ab7 !important;
+  background: none !important;
+}
+
+.dropdown-menu > .active > a,
+.combobox-menu .menu-option.active {
+  background-color: #216cab !important;
+}
+
+ul.nav-tabs.cf-panel-tab-header {
+  background-color: #337ab7 !important;
+  border-top-color: #337ab7 !important;
+  border-bottom-color: #337ab7 !important;
+}
+ul.nav-tabs.cf-panel-tab-header > li.active > a,
+ul.nav-tabs.cf-panel-tab-header > li:not(.active):hover > a {
+  border-right-color: #337ab7 !important;
+  border-left-color: #337ab7 !important;
+}
+
+.group-size-indicator > .progress-bar {
+  background-color: #337ab7 !important;
+}
+
+.panel-primary {
+  border-color: #216cab;
+}
+.panel-primary > .panel-heading {
+  background-color: #337ab7;
+}
+
+.btn-primary, .btn-primary[disabled], .btn-primary.disabled,
+.open > .dropdown-toggle.btn-primary,
+.open > .dropdown-toggle.btn-primary[disabled],
+.open > .dropdown-toggle.btn-primary.disabled {
+  background-color: #337ab7 !important;
+  border-color: #216cab !important;
+}
+.btn-primary:not([disabled]):not(.disabled):hover, .btn-primary:not([disabled]):not(.disabled):focus,
+.open > .dropdown-toggle.btn-primary:not([disabled]):not(.disabled):hover,
+.open > .dropdown-toggle.btn-primary:not([disabled]):not(.disabled):focus {
+  background-color: #216cab !important;
+  border-color: #135d9c !important;
+}
+.btn-primary:not([disabled]):not(.disabled):active,
+.open > .dropdown-toggle.btn-primary:not([disabled]):not(.disabled):active {
+  background-color: #135d9c !important;
+  border-color: #084e8a !important;
+}
+.btn-primary:not([disabled]):not(.disabled):active:focus,
+.open > .dropdown-toggle.btn-primary:not([disabled]):not(.disabled):active:focus {
+  background-color: #084e8a !important;
+  border-color: #003f75 !important;
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+
+.groupby-editor-slider > .vue-slider {
+  background: #ccc;
+}
+.groupby-editor-slider > .vue-slider:hover, .groupby-editor-slider > .vue-slider:focus {
+  background: #bbb;
+}
+.groupby-editor-slider > .vue-slider:active {
+  background: #aaa;
+}
+.groupby-editor-slider > .vue-slider > .vue-slider-process {
+  background: #337ab7;
+}
+.groupby-editor-slider > .vue-slider > .vue-slider-process:hover, .groupby-editor-slider > .vue-slider > .vue-slider-process:focus {
+  background: #216cab;
+}
+.groupby-editor-slider > .vue-slider > .vue-slider-process:active {
+  background: #135d9c;
+}
+
+.groupby-editor-slider-handle {
+  background-color: #337ab7;
+  border-color: #216cab;
+}
+.groupby-editor-slider-handle:hover, .groupby-editor-slider-handle:focus {
+  background-color: #216cab;
+  border-color: #135d9c;
+}
+.groupby-editor-slider-handle:active {
+  background-color: #135d9c;
+  border-color: #135d9c;
+}
+
+/** End style-template.scss */
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../../_style-template.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAmBA;AAIC;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;EAKC,OAxBK;;;AA+BL;AAAA;EAEC;;AAMD;AAAA;AAAA;EAEC;EACA;EACA;;AAGD;EACC;EACA;;AAED;EACC;EACA;;;AAMH;AAAA;EAEC;;;AAGD;EACC;EACA;EACA;;AAEA;AAAA;EAEC;EACA;;;AAIF;EACC;;;AAGD;EACC,cAzEY;;AA0EZ;EACC,kBAlFK;;;AAwFN;AAAA;AAAA;AAAA;EAGC;EACA;;AAIA;AAAA;AAAA;EAEC;EACA;;AAGD;AAAA;EACC;EACA;;AAGD;AAAA;EACC;EACA;;;AAMF;EACC,kBApHK;EAqHL,cArHK;;;AAyHP;EAEC;;AAEA;EAEC;;AAED;EACC;;AAGD;EACC,YAtIK;;AAwIL;EAEC,YAnIU;;AAqIX;EACC,YArIU;;;AA0Ib;EACC,kBAnJM;EAoJN,cA7IY;;AA+IZ;EAEC,kBAjJW;EAkJX,cAjJW;;AAmJZ;EACC,kBApJW;EAqJX,cArJW;;;AA0Jb%22,%22file%22:%22custom.css%22%7D */
