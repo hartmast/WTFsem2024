@@ -1,0 +1,388 @@
+---
+title: "Übungen"
+subtitle: "Daten einlesen, Data wrangling, loops"
+execute:
+  echo: true
+  output: false
+format:
+  revealjs: 
+    slide-number: true
+editor: visual
+---
+
+## Code ergänzen {auto-animate="true"}
+
+Bitte ergänzen Sie den folgenden Code so, dass "\<50" in der Konsole erscheint, wenn i kleiner als 50 ist, und "\>=50", wenn die Zahl größer als 50 ist.
+
+```{r}
+#| echo: true
+#| output: false
+
+for(i in 1:100) {
+  
+  # generate output
+  print("<=100")
+  
+}
+
+```
+
+## Code ergänzen {auto-animate="true"}
+
+Bitte ergänzen Sie den folgenden Code so, dass "\<50" in der Konsole erscheint, wenn i kleiner als 50 ist, und "\>=50", wenn die Zahl größer als 50 ist.
+
+```{r}
+#| echo: true
+#| output: false
+
+for(i in 1:100) {
+  
+  if(i < 50) {
+    # generate output
+    print("<50")
+  } else {
+    print(">=50")
+  }
+  
+  
+  
+}
+
+```
+
+## Einfache Loops {auto-animate="true"}
+
+Bitte ergänzen Sie den folgenden Loop so, dass die Zahlen im Vektor "zahlen" in die Sätze im Vektor "satze" eingesetzt werden. Tipp: Mit paste0 können Sie Strings konkatenieren.
+
+```{r}
+#| echo: true
+#| output: false
+zahlen <- c(2,3,4)
+saetze <- c("Die Anzahl meiner Cousinen beträgt ",
+            "Die Zahl meiner Tanten ist ",
+            "Die Anzahl der Himmelsrichtungen beträgt ")
+
+for(i in 1:length(zahlen)) {
+  
+  
+  
+}
+
+```
+
+## Einfache Loops {auto-animate="true"}
+
+Bitte ergänzen Sie den folgenden Loop so, dass die Zahlen im Vektor "zahlen" in die Sätze im Vektor "satze" eingesetzt werden. Tipp: Mit paste0 können Sie Strings konkatenieren.
+
+```{r}
+#| echo: true
+#| output: false
+zahlen <- c(2,3,4)
+saetze <- c("Die Anzahl meiner Cousinen beträgt ",
+            "Die Zahl meiner Tanten ist ",
+            "Die Anzahl der Himmelsrichtungen beträgt ")
+
+for(i in 1:length(zahlen)) {
+  
+  print(paste0(saetze[i], zahlen[i]))
+  
+}
+
+```
+
+## Einfache Loops {auto-animate="true"}
+
+Alternativ funktioniert aber auch:
+
+```{r}
+#| echo: true
+#| output: false
+zahlen <- c(2,3,4)
+saetze <- c("Die Anzahl meiner Cousinen beträgt ",
+            "Die Zahl meiner Tanten ist ",
+            "Die Anzahl der Himmelsrichtungen beträgt ")
+
+paste0(saetze, zahlen)
+
+```
+
+## Suchen und Ersetzen 1
+
+Bitte laden Sie zunächst die Datei [dwds_export_2024-10-16_09_26_38.csv](https://github.com/hartmast/WTFsem2024/blob/main/data/dwds_export_2024-10-16_09_26_38.csv "dwds_export_2024-10-16_09_26_38.csv"), die in Posit Cloud und Github im Ordner data zur Verfügung steht.
+
+```{r}
+
+d <- read.csv("data/dwds_export_2024-10-16_09_26_38.csv")
+
+```
+
+## Suchen und Ersetzen 1 {auto-animate="true"}
+
+Nutzen Sie die `grep`-Funktion, um im linken und rechten Kontext (Spalte ContextBefore und ContextAfter) nach dem Wort *Computer* zu suchen.
+
+## Suchen und Ersetzen 1 {auto-animate="true"}
+
+Nutzen Sie die `grep`-Funktion, um im linken und rechten Kontext (Spalte ContextBefore und ContextAfter) nach dem Wort *Computer* zu suchen.
+
+```{r}
+
+grep("Computer", d$ContextBefore)
+grep("Computer", d$ContextAfter)
+
+```
+
+## Suchen und Ersetzen 1 {auto-animate="true"}
+
+Nutzen Sie die `grep`-Funktion, um im linken und rechten Kontext (Spalte ContextBefore und ContextAfter) nach dem Wort *Computer* zu suchen.
+
+Nutzen Sie die resultierenden Vektoren, um ein Subset von `d` zu erstellen, das nur diejenigen Belege enthält, in denen *Computer* im linken oder rechten Kontext vorkommt.
+
+```{r}
+
+grep("Computer", d$ContextBefore)
+grep("Computer", d$ContextAfter)
+
+```
+
+## Suchen und Ersetzen 1 {auto-animate="true"}
+
+Nutzen Sie die `grep`-Funktion, um im linken und rechten Kontext (Spalte ContextBefore und ContextAfter) nach dem Wort *Computer* zu suchen.
+
+Nutzen Sie die resultierenden Vektoren, um ein Subset von `d` zu erstellen, das nur diejenigen Belege enthält, in denen *Computer* im linken oder rechten Kontext vorkommt.
+
+```{r}
+
+comp1 <- grep("Computer", d$ContextBefore)
+comp2 <- grep("Computer", d$ContextAfter)
+
+```
+
+## Suchen und Ersetzen 1 {auto-animate="true"}
+
+Nutzen Sie die `grep`-Funktion, um im linken und rechten Kontext (Spalte ContextBefore und ContextAfter) nach dem Wort *Computer* zu suchen.
+
+Nutzen Sie die resultierenden Vektoren, um ein Subset von `d` zu erstellen, das nur diejenigen Belege enthält, in denen *Computer* im linken oder rechten Kontext vorkommt.
+
+```{r}
+
+comp1 <- grep("Computer", d$ContextBefore)
+comp2 <- grep("Computer", d$ContextAfter)
+
+d[comp1,]
+d[comp2,]
+
+
+```
+
+## Suchen und Ersetzen 1 {auto-animate="true"}
+
+Nutzen Sie die `grep`-Funktion, um im linken und rechten Kontext (Spalte ContextBefore und ContextAfter) nach dem Wort *Computer* zu suchen.
+
+Nutzen Sie die resultierenden Vektoren, um ein Subset von `d` zu erstellen, das nur diejenigen Belege enthält, in denen *Computer* im linken oder rechten Kontext vorkommt.
+
+```{r}
+
+comp1 <- grep("Computer", d$ContextBefore)
+comp2 <- grep("Computer", d$ContextAfter)
+
+d[comp1,]
+d[comp2,]
+
+# oder beides zusammen:
+d[unique(c(comp1,comp2)),]
+
+```
+
+## Subsetten 1 {auto-animate="true"}
+
+Erstellen Sie ein Subset von d mit dem Namen d_vorprogrammiert, in dem nur diejenigen Belege enthalten sind, bei denen in der "Hit"-Spalte *vorprogrammiert* steht.
+
+```{r}
+#| eval: false
+
+# entweder:
+d[d$Hit...,]
+
+# oder:
+subset(d, ...)
+
+```
+
+## Subsetten 1 {auto-animate="true"}
+
+Erstellen Sie ein Subset von d mit dem Namen d_vorprogrammiert, in dem nur diejenigen Belege enthalten sind, bei denen in der "Hit"-Spalte *vorprogrammiert* steht.
+
+```{r}
+
+
+# entweder:
+d[d$Hit=="vorprogrammiert",]
+
+# oder:
+subset(d, Hit == "vorprogrammiert")
+
+```
+
+## Suchen und Ersetzen 2 {auto-animate="true"}
+
+Bitte ersetzen Sie das Wort "Voldemort" im folgenden Beispiel durch "der, dessen Name nicht genannt werden darf".
+
+```{r}
+
+beispiel <- "Gestern war Voldemort bei D6 zu Besuch."
+
+```
+
+## Suchen und Ersetzen 2 {auto-animate="true"}
+
+Bitte ersetzen Sie das Wort "Voldemort" im folgenden Beispiel durch "der, dessen Name nicht genannt werden darf".
+
+```{r}
+#| eval: false 
+beispiel <- "Gestern war Voldemort bei D6 zu Besuch."
+
+gsub(..., ..., beispiel)
+
+```
+
+## Suchen und Ersetzen 2 {auto-animate="true"}
+
+Bitte ersetzen Sie das Wort "Voldemort" im folgenden Beispiel durch "der, dessen Name nicht genannt werden darf".
+
+```{r}
+
+beispiel <- "Gestern war Voldemort bei D6 zu Besuch."
+
+gsub("Voldemort", "der, dessen Name nicht genannt werden darf,", beispiel)
+
+```
+
+## Suchen und Ersetzen 2 {auto-animate="true"}
+
+Bitte ersetzen Sie das Wort "Voldemort" im folgenden Beispiel durch "der, dessen Name nicht genannt werden darf".
+
+```{r}
+#| output: true
+beispiel <- "Gestern war Voldemort bei D6 zu Besuch."
+
+gsub("Voldemort", "der, dessen Name nicht genannt werden darf,", beispiel)
+
+```
+
+## Troubleshooting beim Daten einlesen {auto-animate="true"}
+
+Bitte lesen Sie die Datei all_chains.csv ein, die im "data"-Ordner zu finden ist.
+
+```{r}
+
+chains <- read.csv("data/all_chains.csv")
+
+```
+
+## Troubleshooting beim Daten einlesen {auto-animate="true"}
+
+Bitte lesen Sie die Datei all_chains.csv ein, die im "data"-Ordner zu finden ist.
+
+```{r}
+
+chains <- read.csv("data/all_chains.csv")
+head(chains)
+
+```
+
+## Troubleshooting beim Daten einlesen {auto-animate="true"}
+
+Bitte lesen Sie die Datei all_chains.csv ein, die im "data"-Ordner zu finden ist.
+
+```{r}
+#| output: true
+
+chains <- read.csv("data/all_chains.csv")
+head(chains)
+
+```
+
+## Troubleshooting beim Daten einlesen {auto-animate="true"}
+
+Bitte lesen Sie die Datei all_chains.csv ein, die im "data"-Ordner zu finden ist.
+
+```{r}
+#| eval: false
+
+chains <- read.csv("data/all_chains.csv")
+head(chains)
+
+chains <- read.delim("data/all_chains.csv", sep = ..., quote = ...)
+
+```
+
+## Troubleshooting beim Daten einlesen {auto-animate="true"}
+
+Bitte lesen Sie die Datei all_chains.csv ein, die im "data"-Ordner zu finden ist.
+
+```{r}
+#| eval: false
+
+chains <- read.csv("data/all_chains.csv")
+head(chains)
+
+chains <- read.delim("data/all_chains.csv", sep = "\t", quote = "")
+
+```
+
+## Troubleshooting beim Daten einlesen {auto-animate="true"}
+
+Bitte lesen Sie die Datei all_chains.csv ein, die im "data"-Ordner zu finden ist.
+
+```{r}
+#| output: true
+
+chains <- read.csv("data/all_chains.csv")
+# head(chains)
+
+chains <- read.delim("data/all_chains.csv", sep = "\t", quote = "")
+head(chains)
+
+```
+
+## Daten explorieren {auto-animate="true"}
+
+Bitte finden Sie heraus, welche Variablenausprägungen die Spalte *condition* in unserem Datensatz `chains` hat.
+
+```{r}
+
+chains$condition
+
+```
+
+## Daten explorieren {auto-animate="true"}
+
+Bitte finden Sie heraus, welche Variablenausprägungen die Spalte *condition* in unserem Datensatz `chains` hat.
+
+```{r}
+
+unique(chains$condition)
+
+```
+
+## Subsetting 2 {auto-animate="true"}
+
+Bitte erstellen Sie zwei Subsets chains_control und chains_distractor, die nur die Daten für die jeweilige Kondition enthalten.
+
+```{r}
+#| eval: false
+chains_control <- subset(chains, ...)
+chains_distractor <- subset(chains, ...)
+
+```
+
+## Subsetting 2 {auto-animate="true"}
+
+Bitte erstellen Sie zwei Subsets chains_control und chains_distractor, die nur die Daten für die jeweilige Kondition enthalten.
+
+```{r}
+
+chains_control <- subset(chains, condition == "control")
+chains_distractor <- subset(chains, condition == "distractor")
+
+```
