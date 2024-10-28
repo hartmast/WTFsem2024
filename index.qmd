@@ -5,3 +5,7 @@ editor: visual
 ---
 
 Hier finden Sie Materialien zum Kurs "Wörter - Texte - Frequenzen".
+
+## Übungen
+
+[Übung 1](Praesentationen/uebungen01.html)
