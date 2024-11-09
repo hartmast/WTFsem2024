@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Übungen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="uebungen01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="uebungen01_files/libs/quarto-html/quarto.js"></script>
+<script src="uebungen01_files/libs/quarto-html/popper.min.js"></script>
+<script src="uebungen01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="uebungen01_files/libs/quarto-html/anchor.min.js"></script>
+<link href="uebungen01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="uebungen01_files/libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="uebungen01_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="uebungen01_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="uebungen01_files/libs/bootstrap/bootstrap-fe6593aca1dacbc749dc3d2ba78c8639.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="uebungen01_files/libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Übungen</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Im Folgenden wollen wir noch einmal wesentliche R-Skills einüben. Lösungsvorschläge zu den Übungen finden Sie jeweils in eingeklappter Form:</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Klapp! Mich! Aus!">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Klapp! Mich! Aus!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Am besten lassen Sie die Lösungen zunächst eingeklappt, um sich selbst auszuprobieren. Allerdings empfehle ich, dabei die richtige Balance zu finden: Ver(sch)wenden Sie nicht zu viel Zeit auf die Übungen - wenn Sie nicht weiterwissen, schauen Sie gern die Lösung an. Auch im echten Leben ist es ja so, dass man beim Programmieren nicht alles auswendig weiß, sondern sehr viel googelt.</p>
+</div>
+</div>
+</div>
+<section id="übung-1" class="level2">
+<h2 class="anchored" data-anchor-id="übung-1">Übung 1</h2>
+<p>Fangen wir mit den Basics an: Erstellen Sie mit Hilfe des Zuweisungsoperators <code>&lt;-</code> zwei Objekte, <code>a</code> und <code>b</code>, wobei <code>a</code> den Wert 25 hat und <code>b</code> den Wert der Quadratwurzel von pi (in R als <code>pi</code> gespeichert). Anschließend addieren Sie <code>a</code> und <code>b</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Objekte erstellen</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># addieren</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-2a" class="level2">
+<h2 class="anchored" data-anchor-id="übung-2a">Übung 2a</h2>
+<p>Nun wollen wir einüben, wie man Daten einliest. Wir benutzen zunächst den Datensatz Weg_Kx.csv, der unter data/ zur Verfügung steht. Er ist so formatiert, dass Sie ihn einfach mit <code>read.csv</code> einlesen können. Geben Sie dem Objekt, das Sie dem Datensatz mit dem Zuweisungsoperator <code>&lt;-</code> zuweisen, den Namen <code>d</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten einlesen</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/Weg_Kx.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Troubleshooting">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Troubleshooting
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Ich kann den Datensatz nicht einlesen.</strong></p>
+<p>Die wahrscheinlichste Option ist, dass der angegebene Dateipfad nicht stimmt. In diesem Fall erscheint eine Warnung wie die folgende:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"diese_datei_existiert_nicht.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre data-code-line-numbers=""><code>Error in file(file, "rt"): cannot open the connection</code></pre>
+</div>
+</div>
+<p>In diesem Fall überprüfen Sie bitte, ob die Datei wirklich da liegt, wo Sie R gesagt haben, dass Sie liegt. Oben habe ich <code>data/Weg_Kx.csv</code> als Pfad angegeben. Der Pfad ist <strong>relativ zum aktuellen Arbeitsverzeichnis</strong>, das wir mit <code>getwd()</code> erfragen können. Mit <code>setwd</code> können wir außerdem ein neues Arbeitsverzeichnis setzen.</p>
+<p><strong>Wie finde ich heraus, wo meine Datei liegt?</strong></p>
+<p>Wenn Sie nicht sicher sind, wo Ihre Datei liegt, müssen Sie herausfinden, wo sie sich auf Ihrer Festplatte befindet. Dafür gibt es sowohl unter Windows als auch bei Mac Suchfunktionen, die die Ordner auf Ihrer Festplatte durchsuchen. Sobald Sie die Datei gefunden haben, können Sie mit Rechtsklick &gt; Pfad kopieren (Windows) bzw. Option+Command+C (Mac) den Dateipfad in die Zwischenablage kopieren und in RStudio einfügen (Rechtsklick &gt; Einfügen oder Strg+Alt+V). Achten Sie darauf, dass der Dateiname in Anführungszeichen stehen muss; beachten Sie dabei wiederum, dass Mac automatisch Anführungszeichen mit in die Zwischenablage kopiert, wenn irgendwo im Dateipfad z.B. ein Leerzeichen enthalten ist, und dass doppelte Anführungszeichen nicht funktionieren. Beispiele für Code, der NICHT (!) funktioniert:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(data<span class="sc">/</span>Weg_Kx.csv) <span class="co"># keine Anführungszeichen!</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"'data/Weg_Kx.csv'"</span>) <span class="co"># mehrfache Anführungszeichen (einmal doppelte, einmal einfache)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/Weg_Cx.csv"</span>) <span class="co"># Tippfehler im Dateinamen (Cx statt Kx)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/Weg_Kx.csv) # schließendes Anführungszeichen fehlt </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">--&gt; in diesem Fall bricht die Hölle los, </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">weil Sie damit auch das gesamte </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">weitere Skript ruinieren.....</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-2b-daten-inspizieren" class="level2">
+<h2 class="anchored" data-anchor-id="übung-2b-daten-inspizieren">Übung 2b: Daten inspizieren</h2>
+<p>Wir wollen nun einen genaueren Überblick über die eingelesenen Daten gewinnen. Bei dem Datensatz handelt es sich um eine annotierte DWDS-Konkordanz zur deutschen <em>Weg</em>-Konstruktion (<em>sie bahnte sich einen Weg durch die Menge</em>), die <a href="https://www.degruyter.com/document/doi/10.1515/9783110762341/html">Willich (2022)</a> untersucht hat.</p>
+<p>Um einen Überblick über die Daten zu gewinnen, schauen uns zunächst die ersten paar Zeilen an. Nutzen Sie dafür die Funktion <code>head</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># erste paar Zeilen ausgeben</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>    Verb KorE Lexikalischer.Frame Schwierigkeit No.                 Date
+1 bahnen Pfad              Motion             x   1 2000-01-01T00:00:00Z
+2 bahnen  Weg              Motion             x   2 2000-01-05T00:00:00Z
+3 bahnen  Weg              Motion             c   5 2000-02-10T00:00:00Z
+4 bahnen  Weg              Motion             x   7 2000-01-27T00:00:00Z
+5 bahnen  Weg              Motion            cx   8 2000-02-07T00:00:00Z
+6 bahnen  Weg              Motion             x  11 2000-03-09T00:00:00Z
+         Genre
+1 Belletristik
+2      Zeitung
+3      Zeitung
+4      Zeitung
+5      Zeitung
+6      Zeitung
+                                                                            Bibl
+1 Koneffke, Jan: Paul Schatz im Uhrenkasten, Köln: DuMont Buchverlag 2000, S. 77
+2                                                    Die Zeit, 05.01.2000, Nr. 2
+3                                                    Die Zeit, 10.02.2000, Nr. 7
+4                                                    Die Zeit, 27.01.2000, Nr. 5
+5                                              Archiv der Gegenwart, 2001 [2000]
+6                                                   Die Zeit, 09.03.2000, Nr. 11
+                                                                                                        ContextBefore
+1                                                                  Aus Tannen rieselte Schnee, Schnee wehte vom Dach.
+2               Er glaubt nicht an die offizielle Version vom Verkehrsunfall und will ihren Tod aufklären und rächen.
+3 Mal davon abgesehen, dass man das Problem etwas weniger marktschreierisch behandeln könnte - ist es überhaupt eins?
+4                      Und in der Nacht kommen sie zum Fressen an Land, spazieren oft kilometerweit durch die Gegend.
+5                                                              Dies betrifft insbesondere die Probleme mit Slowenien.
+6                         Mal verengt sich die Höhle zu schmalen Röhren, mal öffnen sich stalaktitenbehangene Hallen.
+                                                                                                                                                                                                                                                                                                   Hit
+1                                                                                                                                                                                                                                                      Paul mußte sich einen Pfad zum Holzhaus bahnen.
+2                                                                                                                                                     Als doppelter Fremder, der von einer fernen Insel und aus einer anderen Zeit kommt, bahnt er sich zielstrebig den Weg zum Mörder seiner Tochter.
+3 Jawohl, denn die Damen wirken "schwerfällig und lustlos", bahnen sich an Bord nur mühsam ihren Weg durch die engen Gänge und ecken sehr wahrscheinlich auch bei solchen Passagieren an, die es in höchstem Maße unerquicklich finden, ihren Anisschnaps von einem Fesselballon serviert zu bekommen.
+4                                                                               Bheki zeigt auf etwas, das einen zum Schwimmen endgültig auf den Pool der Lodge verweist: Schleifspuren am Ufer, Naturrutschbahnen durch Schilf und Gestrüpp - hier haben sich Krokodile ihren Weg ins Wasser gebahnt.
+5                                                                                          Was nun Crna Gora (Montenegro) betrifft, so beglückwünsche ich die Montenegriner, dass sie sich ungestört durch Serbien einen Weg nach Europa bahnen wollen, obwohl sie formale Bindungen an Serbien haben.
+6                                                                                                                                                                                                                              Hier also hat sich die glühende Lava einst ihren Weg ins Freie gebahnt.
+                                                                                                                                                                                                                                                                                                          ContextAfter
+1                                                                                                                                                                                                                                         Mehrmals warf er seinen Lederranzen gegen ein Fenster, bis es zersplitterte.
+2 Dabei sehen wir immer wieder Bilder aus der Vergangenheit, Szenen eines anderen Films aus dem Jahre 1967, Poor Cow von Ken Loach, in dem Terence Stamp, ganz hoffnungsvoller, cooler Jungstar, einen jungen Vater spielt, der sein Geld als Gangster verdient und Frau und Kind verlässt, um ins Gefängnis zu gehen.
+3                                                                                                                                                                                                                                             Natürlich hätte schon längst mal jemand auf die Essbremse treten sollen.
+4                                                                                                                                                                                                                                                                                   Mehrere tausend bevölkern den See.
+5                                                                                                                                                                                                                                                         Auch müssen sie die Probleme lösen, die sie mit uns haben...
+6                                                                                                                                  Nachdem wir uns auf dem Rückweg mit den Händen durch den Neuschnee nach draußen gegraben haben, gefrieren die schweißnassen Haarschöpfe binnen Sekunden zu bizarren Eisformationen.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Paket <code>skimr</code> bietet ebenfalls praktische Funktionen, um sich einen ersten Überblick über die Struktur eines Dataframes zu verschaffen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paket installieren (nur bei der ersten Benutzung des Pakets erforderlich)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"skimr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paket laden</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skim-Funktion benutzen</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">d</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Verb</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KorE</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lexikalischer.Frame</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Schwierigkeit</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Genre</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bibl</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ContextBefore</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">241</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hit</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">470</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ContextAfter</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">336</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">No.</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">34.63</td>
+<td style="text-align: right;">66.43</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">32.5</td>
+<td style="text-align: right;">361</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-2c-variablenausprägungen" class="level2">
+<h2 class="anchored" data-anchor-id="übung-2c-variablenausprägungen">Übung 2c: Variablenausprägungen</h2>
+<p>Finden Sie heraus, welche unterschiedlichen Verben in der Konstruktion auftauchen. Die Verben finden Sie in der Tabellenspalte <code>Verb</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># entweder:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(d<span class="sc">$</span>Verb)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># oder</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(d<span class="sc">$</span>Verb))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-2d-einlesen-mit-readr" class="level2">
+<h2 class="anchored" data-anchor-id="übung-2d-einlesen-mit-readr">Übung 2d: Einlesen mit <code>readr</code></h2>
+<p>Jetzt wollen wir den Datensatz noch einmal mit dem <code>readr</code>-Paket einlesen, das Teil des <code>tidyverse</code> ist. Die Funktionen darin haben fast die gleichen Namen wie die Funktionen in Base R, nur mit einem _ statt mit einem Punkt: <code>read_csv</code> (für CSV) oder <code>read_delim</code> (für Dateien mit jeglichem Delimiter, also auch z.B. für tabseparierte Dateien oder für solche, in dem die Spalten mit einem Semikolon getrennt sind.) Laden Sie zunächst die <code>Tidyverse</code>-Paketfamilie und nutzen Sie dann die Funktion <code>read_csv</code>, um die CSV-Datei noch einmal einzulesen. Gern können Sie einfach wieder <code>d</code> als Objektname verwenden (unser altes Objekt <code>d</code> wird dann überschrieben).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse laden</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Datei einlesen</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Weg_Kx.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Probieren Sie nun aus, was passiert, wenn Sie einfach <code>d</code> in die Kommandozeile eingeben. Sie sehen, dass der Dataframe nun eine besondere Art von Dataframe ist, ein sog. Tibble:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<details><summary>Output anzeigen</summary>
+<pre class="details" data-summary="Output anzeigen" data-code-line-numbers=""><code># A tibble: 27 × 11
+   Verb   KorE  `Lexikalischer Frame` Schwierigkeit   No. Date               
+   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                 &lt;chr&gt;         &lt;dbl&gt; &lt;dttm&gt;             
+ 1 bahnen Pfad  Motion                x                 1 2000-01-01 00:00:00
+ 2 bahnen Weg   Motion                x                 2 2000-01-05 00:00:00
+ 3 bahnen Weg   Motion                c                 5 2000-02-10 00:00:00
+ 4 bahnen Weg   Motion                x                 7 2000-01-27 00:00:00
+ 5 bahnen Weg   Motion                cx                8 2000-02-07 00:00:00
+ 6 bahnen Weg   Motion                x                11 2000-03-09 00:00:00
+ 7 bahnen Weg   Motion                c                14 2000-03-16 00:00:00
+ 8 bahnen Weg   Motion                x                15 2002-01-01 00:00:00
+ 9 bahnen Weg   Motion                x                15 2000-03-23 00:00:00
+10 bahnen Weg   Motion                x                18 2003-01-01 00:00:00
+# ℹ 17 more rows
+# ℹ 5 more variables: Genre &lt;chr&gt;, Bibl &lt;chr&gt;, ContextBefore &lt;chr&gt;, Hit &lt;chr&gt;,
+#   ContextAfter &lt;chr&gt;</code></pre>
+</details>
+</div>
+</div>
+<p>Tibbles sind eine für das Tidyverse spezifische Datenstruktur. Mit den genauen Unterschieden zu Dataframes in Base R müssen wir uns an dieser Stelle nicht beschäftigen, wir sollten aber im Hinterkopf behalten, dass sie teilweise andere Eigenschaften als Base-R-Dataframes haben, was zu kleineren Unterschieden dahingehend führt, wie wir mit ihnen arbeiten können. Die meisten dieser Unterschiede sind aber für die basalen Operationen, um die es hier geht, irrelevant und zeigen sich eventuell bei komplexeren Operationen.</p>
+</section>
+<section id="übung-2e-subsetting" class="level2">
+<h2 class="anchored" data-anchor-id="übung-2e-subsetting">Übung 2e: Subsetting</h2>
+<p>Jetzt wollen wir ein subset d_bahnen erstellen, das nur diejenigen Zeilen enthält, in denen das Verb <em>bahnen</em> lautet. Hier gibt es drei Möglichkeiten: Entweder wir nutzen die Syntax <code>dataframe[Zeile,Spalte]</code> oder wir nutzen die <code>subset()</code>-Funktion oder wir nutzen die im <code>tidyverse</code> - genauer: im Tidyverse-Paket <code>dplyr</code> - vorhandene <code>filter()</code>-Funktion. Letztere funktioniert ähnlich wie <code>subset()</code>, hat aber noch ein paar weitere praktische Funktionen (s. die Beispiele unter <code>?dplyr::filter</code>).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: Syntax dataframe[Zeile, Spalte]:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>d_bahnen <span class="ot">&lt;-</span> d[<span class="fu">which</span>(d<span class="sc">$</span>Verb<span class="sc">==</span><span class="st">"bahnen"</span>),]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2: subset()</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>d_bahnen <span class="ot">&lt;-</span> <span class="fu">subset</span>(d, Verb <span class="sc">==</span> <span class="st">"bahnen"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 3: filter()</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>d_bahnen <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, Verb <span class="sc">==</span> <span class="st">"bahnen"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-3a-schwer" class="level2">
+<h2 class="anchored" data-anchor-id="übung-3a-schwer">Übung 3a (schwer)</h2>
+<p>Nun wollen wir einen etwas schwerer einzulesenden Datensatz einlesen, der sich nicht einfach mit <code>read.csv</code> einlesen lässt. Wir benutzen dafür den Datensatz umfrage-praesenzlehre.csv, der ebenfalls unter data/ zur Verfügung steht. Der Datensatz enthält (anonyme) Resultate einer authentischen Umfrage, in der Studierende nach ihren Präferenzen bzgl. Online- vs.&nbsp;Präsenzlehre befragt wurden.</p>
+<p>Informationen zum Datensatz:</p>
+<ul>
+<li>tabellarische Daten, Semikolon (;) als Spaltentrenner</li>
+<li>Encoding: ISO-8859-1 (Latin-1)</li>
+<li>Die Spalten haben Namen, einige davon sind aber mehrfach vergeben:
+<ul>
+<li><code>Semesterzahl</code></li>
+<li><code>Vorlesungen</code></li>
+<li><code>Übungen</code></li>
+<li><code>Tutorien</code></li>
+<li><code>Seminare</code></li>
+<li><code>Verfügbarkeit des CIP-Pools</code></li>
+</ul></li>
+</ul>
+<p>Versuchen Sie zunächst, die Datei mit <code>read.csv</code> und/oder <code>read_csv</code> einzulesen. Was sagen uns die Fehlermeldungen?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre data-code-line-numbers=""><code>Error in make.names(col.names, unique = TRUE): invalid multibyte string 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre data-code-line-numbers=""><code>Error in nchar(x, "width"): invalid multibyte string, element 1</code></pre>
+</div>
+</div>
+<p>Zugegeben: Die Fehlermeldung ist nicht unbedingt selbsterklärend. Die Lösung liegt in einer der oben aufgeführten Eigenschaften der Datei: R geht standardmäßig davon aus, dass Dateien, die eingelesen werden, die UTF-8 kodiert sind. UTF-8 ist einer von mehreren Standards zur Kodierung von Zeichen (wir dürfen nicht vergessen, dass ein Computer letztlich, vereinfacht gesagt, nur mit Einsen und Nullen umgehen kann und so etwas wie Buchstaben daher irgendwie kodiert werden müssen). Unsere Datei ist in Latin-1 kodiert.</p>
+</div>
+</div>
+</div>
+<p>Wie können wir den Fehler beheben? Schauen Sie ggf. in die Hilfe von <code>?read.csv</code> bzw. <code>?read_csv</code> und suchen Sie in den Hilfe-Vignetten nach “encoding”.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">fileEncoding =</span> <span class="st">"latin1"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"Latin1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Nun werden Sie sehen, dass die Verarbeitung immer noch nicht ganz so klappt, wie wir das wollen. Woran liegt das?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es liegt natürlich daran, dass die Spalten hier nicht mit Kommata abgetrennt sind. (Wir erinnern uns: CSV steht für Comma-Separated Values.) Stattdessen sind sie, wie in der Beschreibung der Dateieigenschaften oben erwähnt, mit Semikola abgetrennt.</p>
+</div>
+</div>
+</div>
+<p>Wir können die Funktion <code>read.table</code> (Base R) oder <code>read_delim</code> (Tidyverse) verwenden, um die Datei einzulesen. Dabei müssen wir den jeweiligen Spaltentrenner (Delimiter) angeben. Achtung: Bei <code>read.table</code> heißt das Argument dafür <code>sep</code>, bei <code>read_delim</code> heißt es <code>delim</code>. Denken Sie daran, auch das Encoding zu spezifizieren.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.table</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">fileEncoding =</span> <span class="st">"latin1"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_delim</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">delim=</span><span class="st">";"</span>,  <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Zur Erinnerung: Wenn wir die Dateien einfach nur mit einer der read-Funktionen einlesen, werden sie uns einfach nur in der Konsole angezeigt und verschwinden ansonsten im Limbo. Um weiter mit ihnen arbeiten zu können, müssen wir ihnen ein Objekt zuweisen. Lesen Sie die Datei nun bitte nochmal ein und weisen sie ihr den Namen <code>umfrage</code> zu. Verwenden Sie zunächst die Base-R-Funktion <code>read.table()</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>umfrage <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">fileEncoding =</span> <span class="st">"latin1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Schauen Sie sich die Spaltennamen an mit der Funktion <code>colnames()</code>. Was fällt auf? Wie können wir die “richtigen” Spaltennamen finden? Und wie können wir R dazu bringen, dass er die “richtigen” Spaltennamen auch als Spaltennamen in unserem Dataframe verwendet?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code> [1] "V1"  "V2"  "V3"  "V4"  "V5"  "V6"  "V7"  "V8"  "V9"  "V10" "V11" "V12"
+[13] "V13" "V14" "V15" "V16" "V17" "V18" "V19"</code></pre>
+</div>
+</div>
+<p>Wir sehen, dass R die Spaltennamen nicht aus der ersten Zeile des CSV-Sheet übernommen, sondern einfach durchnummeriert hat. Die Spaltennamen befinden sich nun in der ersten Zeile des Dataframe:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>        V1      V2           V3                V4              V5           V6
+1 Nachname Vorname Benutzername Bearbeitungsdauer Umfrage beendet Semesterzahl
+            V7                                                  V8          V9
+1 Semesterzahl Präferenz bzgl. Präsenz- vs. Online-Veranstaltungen Vorlesungen
+          V10     V11     V12      V13      V14      V15      V16
+1 Vorlesungen Übungen Übungen Tutorien Tutorien Seminare Seminare
+                                          V17                         V18
+1 Wichtigkeit der Verfügbarkeit des CIP-Pools Verfügbarkeit des CIP-Pools
+                          V19
+1 Verfügbarkeit des CIP-Pools</code></pre>
+</div>
+</div>
+<p>Wir können die Spaltennamen jedoch manuell zuweisen, indem wir sagen, dass die erste Zeile als <code>colnames()</code> verwendet werden soll. Anschließend müssen wir die erste Zeile aus dem Dataframe löschen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeile als Spaltennamen:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(umfrage) <span class="ot">&lt;-</span> umfrage[<span class="dv">1</span>,]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeile löschen:</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>umfrage <span class="ot">&lt;-</span> umfrage[<span class="sc">-</span><span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Alternativ können wir mit der Option <code>header=TRUE</code> beim Einlesen der Datei schon sicherstellen, dass R weiß, dass die erste Zeile als Überschriften, also als Spaltennamen, behandelt werden soll.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>umfrage <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">fileEncoding =</span> <span class="st">"latin1"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Lesen Sie nun die Dateien mit <code>read_delim</code> aus dem Tidyverse ein. Schauen Sie dann auf die Spaltennamen. Was ist anders?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten mit read_delim einlesen:</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>umfrage <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">delim=</span><span class="st">";"</span>,  <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code> [1] "Nachname"                                           
+ [2] "Vorname"                                            
+ [3] "Benutzername"                                       
+ [4] "Bearbeitungsdauer"                                  
+ [5] "Umfrage beendet"                                    
+ [6] "Semesterzahl...6"                                   
+ [7] "Semesterzahl...7"                                   
+ [8] "Präferenz bzgl. Präsenz- vs. Online-Veranstaltungen"
+ [9] "Vorlesungen...9"                                    
+[10] "Vorlesungen...10"                                   
+[11] "Übungen...11"                                       
+[12] "Übungen...12"                                       
+[13] "Tutorien...13"                                      
+[14] "Tutorien...14"                                      
+[15] "Seminare...15"                                      
+[16] "Seminare...16"                                      
+[17] "Wichtigkeit der Verfügbarkeit des CIP-Pools"        
+[18] "Verfügbarkeit des CIP-Pools...18"                   
+[19] "Verfügbarkeit des CIP-Pools...19"                   </code></pre>
+</div>
+</div>
+<p>Wir sehen, dass die doppelten Spaltennamen automatisch desambiguiert werden, indem ihnen die Spaltennummer angehängt wird.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-3b-wieder-etwas-leichter" class="level2">
+<h2 class="anchored" data-anchor-id="übung-3b-wieder-etwas-leichter">Übung 3b (wieder etwas leichter)</h2>
+<p>Untersuchen Sie nun den Datensatz:</p>
+<ul>
+<li>Welche Spalten gibt es? Welche enthalten tatsächlich relevante Informationen?</li>
+<li>Wie viele Spalten gibt es? Welche enthalten tatsächlich relevante Informationen?</li>
+<li>Warum sind einige Spaltennamen doppelt vergeben?</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># erste paar Zeilen anzeigen:</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code># A tibble: 6 × 19
+  Nachname Vorname Benutzername Bearbeitungsdauer `Umfrage beendet`  
+  &lt;lgl&gt;    &lt;lgl&gt;   &lt;lgl&gt;                    &lt;dbl&gt; &lt;chr&gt;              
+1 NA       NA      NA                          38 26. Aug 2021, 14:10
+2 NA       NA      NA                         221 26. Aug 2021, 14:17
+3 NA       NA      NA                         107 26. Aug 2021, 14:15
+4 NA       NA      NA                          33 26. Aug 2021, 18:20
+5 NA       NA      NA                          52 26. Aug 2021, 14:32
+6 NA       NA      NA                          87 26. Aug 2021, 15:42
+# ℹ 14 more variables: Semesterzahl...6 &lt;chr&gt;, Semesterzahl...7 &lt;dbl&gt;,
+#   `Präferenz bzgl. Präsenz- vs. Online-Veranstaltungen` &lt;chr&gt;,
+#   Vorlesungen...9 &lt;chr&gt;, Vorlesungen...10 &lt;dbl&gt;, Übungen...11 &lt;chr&gt;,
+#   Übungen...12 &lt;dbl&gt;, Tutorien...13 &lt;chr&gt;, Tutorien...14 &lt;dbl&gt;,
+#   Seminare...15 &lt;chr&gt;, Seminare...16 &lt;dbl&gt;,
+#   `Wichtigkeit der Verfügbarkeit des CIP-Pools` &lt;chr&gt;,
+#   `Verfügbarkeit des CIP-Pools...18` &lt;chr&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Datenstruktur ausgeben:</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>spc_tbl_ [28 × 19] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Nachname                                           : logi [1:28] NA NA NA NA NA NA ...
+ $ Vorname                                            : logi [1:28] NA NA NA NA NA NA ...
+ $ Benutzername                                       : logi [1:28] NA NA NA NA NA NA ...
+ $ Bearbeitungsdauer                                  : num [1:28] 38 221 107 33 52 87 620 61 124 4 ...
+ $ Umfrage beendet                                    : chr [1:28] "26. Aug 2021, 14:10" "26. Aug 2021, 14:17" "26. Aug 2021, 14:15" "26. Aug 2021, 18:20" ...
+ $ Semesterzahl...6                                   : chr [1:28] "Fachsemester 5 oder höher" "Fachsemester 5 oder höher" "Fachsemester 3-4" "Fachsemester 3-4" ...
+ $ Semesterzahl...7                                   : num [1:28] 3 3 2 2 2 2 2 2 2 4 ...
+ $ Präferenz bzgl. Präsenz- vs. Online-Veranstaltungen: chr [1:28] NA NA NA NA ...
+ $ Vorlesungen...9                                    : chr [1:28] "definitiv online" "Enthaltung" "definitiv online" "definitiv online" ...
+ $ Vorlesungen...10                                   : num [1:28] 5 6 5 5 2 5 4 4 4 NA ...
+ $ Übungen...11                                       : chr [1:28] "Enthaltung" "Enthaltung" "lieber online" "definitiv online" ...
+ $ Übungen...12                                       : num [1:28] 6 6 4 5 1 4 4 5 2 NA ...
+ $ Tutorien...13                                      : chr [1:28] "definitiv in Präsenz" "Enthaltung" "lieber online" "definitiv online" ...
+ $ Tutorien...14                                      : num [1:28] 1 6 4 5 3 4 4 5 2 NA ...
+ $ Seminare...15                                      : chr [1:28] "definitiv in Präsenz" "lieber online" "lieber online" "definitiv online" ...
+ $ Seminare...16                                      : num [1:28] 1 4 4 5 1 3 4 5 2 NA ...
+ $ Wichtigkeit der Verfügbarkeit des CIP-Pools        : chr [1:28] NA NA NA NA ...
+ $ Verfügbarkeit des CIP-Pools...18                   : chr [1:28] "wichtig" "nicht so wichtig" "irrelevant" "irrelevant" ...
+ $ Verfügbarkeit des CIP-Pools...19                   : num [1:28] 2 4 5 5 2 3 5 5 3 NA ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Nachname = col_logical(),
+  ..   Vorname = col_logical(),
+  ..   Benutzername = col_logical(),
+  ..   Bearbeitungsdauer = col_double(),
+  ..   `Umfrage beendet` = col_character(),
+  ..   Semesterzahl...6 = col_character(),
+  ..   Semesterzahl...7 = col_double(),
+  ..   `Präferenz bzgl. Präsenz- vs. Online-Veranstaltungen` = col_character(),
+  ..   Vorlesungen...9 = col_character(),
+  ..   Vorlesungen...10 = col_double(),
+  ..   Übungen...11 = col_character(),
+  ..   Übungen...12 = col_double(),
+  ..   Tutorien...13 = col_character(),
+  ..   Tutorien...14 = col_double(),
+  ..   Seminare...15 = col_character(),
+  ..   Seminare...16 = col_double(),
+  ..   `Wichtigkeit der Verfügbarkeit des CIP-Pools` = col_character(),
+  ..   `Verfügbarkeit des CIP-Pools...18` = col_character(),
+  ..   `Verfügbarkeit des CIP-Pools...19` = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Überblick über die Daten mit skimr:</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">umfrage</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">logical</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Umfrage beendet</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Semesterzahl…6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Präferenz bzgl. Präsenz- vs.&nbsp;Online-Veranstaltungen</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vorlesungen…9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Übungen…11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tutorien…13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Seminare…15</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wichtigkeit der Verfügbarkeit des CIP-Pools</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Verfügbarkeit des CIP-Pools…18</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: logical</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: left;">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nachname</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: left;">:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vorname</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: left;">:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Benutzername</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: left;">:</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bearbeitungsdauer</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">337.75</td>
+<td style="text-align: right;">1249.99</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">43.25</td>
+<td style="text-align: right;">60.5</td>
+<td style="text-align: right;">114.75</td>
+<td style="text-align: right;">6684</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Semesterzahl…7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.32</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">▂▇▁▇▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Vorlesungen…10</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">4.19</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">▂▂▆▇▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Übungen…12</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">3.35</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">▇▂▃▃▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tutorien…14</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">3.27</td>
+<td style="text-align: right;">1.54</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">4.75</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">▇▃▃▃▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Seminare…16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">▅▇▅▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Verfügbarkeit des CIP-Pools…19</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.38</td>
+<td style="text-align: right;">1.56</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">▇▅▃▅▂</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Spaltennamen anzeigen:</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code> [1] "Nachname"                                           
+ [2] "Vorname"                                            
+ [3] "Benutzername"                                       
+ [4] "Bearbeitungsdauer"                                  
+ [5] "Umfrage beendet"                                    
+ [6] "Semesterzahl...6"                                   
+ [7] "Semesterzahl...7"                                   
+ [8] "Präferenz bzgl. Präsenz- vs. Online-Veranstaltungen"
+ [9] "Vorlesungen...9"                                    
+[10] "Vorlesungen...10"                                   
+[11] "Übungen...11"                                       
+[12] "Übungen...12"                                       
+[13] "Tutorien...13"                                      
+[14] "Tutorien...14"                                      
+[15] "Seminare...15"                                      
+[16] "Seminare...16"                                      
+[17] "Wichtigkeit der Verfügbarkeit des CIP-Pools"        
+[18] "Verfügbarkeit des CIP-Pools...18"                   
+[19] "Verfügbarkeit des CIP-Pools...19"                   </code></pre>
+</div>
+</div>
+<p>Tipp: Man kann auch mit dem <code>View()</code>-Befehl bzw. einfach mit Klick auf das jeweilige Objekt im Environment den Dataframe anzeigen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-3c-wieder-sehr-schwer" class="level2">
+<h2 class="anchored" data-anchor-id="übung-3c-wieder-sehr-schwer">Übung 3c (wieder sehr schwer)</h2>
+<p>Löschen Sie nun die doppelten Spalten. Tipp: Mit <code>duplicated()</code> können Sie doppelte Spaltennamen finden. Das wird zunächst nicht gelingen, weil die Spaltennamen desambiguiert sind. Mit <code>gsub("\\..*", "", colnames(umfrage))</code> können Sie aber alles, was in den Spaltennamen ab dem ersten Punkt kommt, löschen und damit die Original-Spaltennamen wiederherstellen, innerhalb derer Sie ebenfalls mit <code>duplicated</code> Duplikate erkennen können.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lösung">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lösung
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Hier zeige ich, wie sich das Ganze mit der Base-R-Variante machen lässt, mit den mit <code>read_delim</code> eingelesenen Daten sollte es aber genauso funktionieren.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten einlesen</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>umfrage <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/umfrage-praesenzlehre.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">fileEncoding =</span> <span class="st">"latin1"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hier zeige ich zunächst die einzelnen Bausteine, die wir brauchen und die ich dann im nächsten Code zusammensetzen werde:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># So zeigen wir die Spaltennamen an:</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(umfrage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code> [1] "Nachname"                                           
+ [2] "Vorname"                                            
+ [3] "Benutzername"                                       
+ [4] "Bearbeitungsdauer"                                  
+ [5] "Umfrage.beendet"                                    
+ [6] "Semesterzahl"                                       
+ [7] "Semesterzahl.1"                                     
+ [8] "Präferenz.bzgl..Präsenz..vs..Online.Veranstaltungen"
+ [9] "Vorlesungen"                                        
+[10] "Vorlesungen.1"                                      
+[11] "Übungen"                                            
+[12] "Übungen.1"                                          
+[13] "Tutorien"                                           
+[14] "Tutorien.1"                                         
+[15] "Seminare"                                           
+[16] "Seminare.1"                                         
+[17] "Wichtigkeit.der.Verfügbarkeit.des.CIP.Pools"        
+[18] "Verfügbarkeit.des.CIP.Pools"                        
+[19] "Verfügbarkeit.des.CIP.Pools.1"                      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ersetzen-Befehl zum De-Desambiguieren der Spaltennamen:</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(umfrage))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code> [1] "Nachname"          "Vorname"           "Benutzername"     
+ [4] "Bearbeitungsdauer" "Umfrage"           "Semesterzahl"     
+ [7] "Semesterzahl"      "Präferenz"         "Vorlesungen"      
+[10] "Vorlesungen"       "Übungen"           "Übungen"          
+[13] "Tutorien"          "Tutorien"          "Seminare"         
+[16] "Seminare"          "Wichtigkeit"       "Verfügbarkeit"    
+[19] "Verfügbarkeit"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Duplikate finden:</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(<span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(umfrage)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE
+[13] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Position der Duplicate innerhalb der Spaltennamen finden:</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(umfrage))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>[1]  7 10 12 14 16 19</code></pre>
+</div>
+</div>
+<p>Diesen which-Befehl können wir nun benutzen, um anhand der Position der doppelten Spalten diese Spalten zu löschen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># der Einfachheit halber speichere ich die Positionen erst in ein Objekt, um den Code lesbarer zu halten:</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>positionen <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(umfrage))))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># so können wir die Spalten löschen:</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>umfrage_clean <span class="ot">&lt;-</span> umfrage[,<span class="sc">-</span>positionen]</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># alternativ können wir auch die which-Anfrage negativ formulieren, mit dem Negationsoperator !</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>positionen_negiert <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="sc">!</span><span class="fu">duplicated</span>(<span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(umfrage))))</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># und dann das Subset damit erstellen, was gegenüber der Syntax mit "-" einigen potentiellen Problemen vorbeugt:</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>umfrage_clean <span class="ot">&lt;-</span> umfrage[,positionen_negiert]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="uebungen01_files/libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>

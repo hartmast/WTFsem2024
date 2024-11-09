@@ -1,0 +1,429 @@
+---
+title: "Übungen"
+execute:
+  echo: true
+  output: false
+format: html
+filters:
+  - quarto
+  - line-highlight
+  - fold_results
+editor: visual
+---
+
+Im Folgenden wollen wir noch einmal wesentliche R-Skills einüben. Lösungsvorschläge zu den Übungen finden Sie jeweils in eingeklappter Form:
+
+::: {.callout-tip title="Klapp! Mich! Aus!" collapse="true"}
+Am besten lassen Sie die Lösungen zunächst eingeklappt, um sich selbst auszuprobieren. Allerdings empfehle ich, dabei die richtige Balance zu finden: Ver(sch)wenden Sie nicht zu viel Zeit auf die Übungen - wenn Sie nicht weiterwissen, schauen Sie gern die Lösung an. Auch im echten Leben ist es ja so, dass man beim Programmieren nicht alles auswendig weiß, sondern sehr viel googelt.
+:::
+
+## Übung 1
+
+Fangen wir mit den Basics an: Erstellen Sie mit Hilfe des Zuweisungsoperators `<-` zwei Objekte, `a` und `b`, wobei `a` den Wert 25 hat und `b` den Wert der Quadratwurzel von pi (in R als `pi` gespeichert). Anschließend addieren Sie `a` und `b`.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+# Objekte erstellen
+a <- 25
+b <- sqrt(pi)
+
+# addieren
+a + b
+```
+:::
+
+## Übung 2a
+
+Nun wollen wir einüben, wie man Daten einliest. Wir benutzen zunächst den Datensatz Weg_Kx.csv, der unter data/ zur Verfügung steht. Er ist so formatiert, dass Sie ihn einfach mit `read.csv` einlesen können. Geben Sie dem Objekt, das Sie dem Datensatz mit dem Zuweisungsoperator `<-` zuweisen, den Namen `d`.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+# Daten einlesen
+d <- read.csv("data/Weg_Kx.csv")
+
+```
+:::
+
+::: {.callout-warning title="Troubleshooting" collapse="true"}
+**Ich kann den Datensatz nicht einlesen.**
+
+Die wahrscheinlichste Option ist, dass der angegebene Dateipfad nicht stimmt. In diesem Fall erscheint eine Warnung wie die folgende:
+
+```{r}
+#| echo: true
+#| output: true
+#| error: true
+
+d <- read.csv("diese_datei_existiert_nicht.csv")
+
+```
+
+In diesem Fall überprüfen Sie bitte, ob die Datei wirklich da liegt, wo Sie R gesagt haben, dass Sie liegt. Oben habe ich `data/Weg_Kx.csv` als Pfad angegeben. Der Pfad ist **relativ zum aktuellen Arbeitsverzeichnis**, das wir mit `getwd()` erfragen können. Mit `setwd` können wir außerdem ein neues Arbeitsverzeichnis setzen.
+
+**Wie finde ich heraus, wo meine Datei liegt?**
+
+Wenn Sie nicht sicher sind, wo Ihre Datei liegt, müssen Sie herausfinden, wo sie sich auf Ihrer Festplatte befindet. Dafür gibt es sowohl unter Windows als auch bei Mac Suchfunktionen, die die Ordner auf Ihrer Festplatte durchsuchen. Sobald Sie die Datei gefunden haben, können Sie mit Rechtsklick \> Pfad kopieren (Windows) bzw. Option+Command+C (Mac) den Dateipfad in die Zwischenablage kopieren und in RStudio einfügen (Rechtsklick \> Einfügen oder Strg+Alt+V). Achten Sie darauf, dass der Dateiname in Anführungszeichen stehen muss; beachten Sie dabei wiederum, dass Mac automatisch Anführungszeichen mit in die Zwischenablage kopiert, wenn irgendwo im Dateipfad z.B. ein Leerzeichen enthalten ist, und dass doppelte Anführungszeichen nicht funktionieren. Beispiele für Code, der NICHT (!) funktioniert:
+
+```{r}
+#| eval: false
+
+d <- read.csv(data/Weg_Kx.csv) # keine Anführungszeichen!
+
+d <- read.csv("'data/Weg_Kx.csv'") # mehrfache Anführungszeichen (einmal doppelte, einmal einfache)
+
+d <- read.csv("data/Weg_Cx.csv") # Tippfehler im Dateinamen (Cx statt Kx)
+
+d <- read.csv("data/Weg_Kx.csv) # schließendes Anführungszeichen fehlt 
+--> in diesem Fall bricht die Hölle los, 
+weil Sie damit auch das gesamte 
+weitere Skript ruinieren.....
+
+
+```
+:::
+
+## Übung 2b: Daten inspizieren
+
+Wir wollen nun einen genaueren Überblick über die eingelesenen Daten gewinnen. Bei dem Datensatz handelt es sich um eine annotierte DWDS-Konkordanz zur deutschen *Weg*-Konstruktion (*sie bahnte sich einen Weg durch die Menge*), die [Willich (2022)](https://www.degruyter.com/document/doi/10.1515/9783110762341/html) untersucht hat.
+
+Um einen Überblick über die Daten zu gewinnen, schauen uns zunächst die ersten paar Zeilen an. Nutzen Sie dafür die Funktion `head`.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+#| output: true
+
+# erste paar Zeilen ausgeben
+head(d)
+
+```
+:::
+
+::: callout-tip
+Das Paket `skimr` bietet ebenfalls praktische Funktionen, um sich einen ersten Überblick über die Struktur eines Dataframes zu verschaffen.
+
+```{r}
+#| eval: false
+
+# Paket installieren (nur bei der ersten Benutzung des Pakets erforderlich)
+install.packages("skimr")
+```
+
+```{r}
+# Paket laden
+library(skimr)
+```
+
+```{r, attr.output='.details summary="Output"'}
+#| echo: true
+#| output: true
+
+# skim-Funktion benutzen
+skim(d)
+```
+:::
+
+## Übung 2c: Variablenausprägungen
+
+Finden Sie heraus, welche unterschiedlichen Verben in der Konstruktion auftauchen. Die Verben finden Sie in der Tabellenspalte `Verb`.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+# entweder:
+unique(d$Verb)
+
+# oder
+levels(factor(d$Verb))
+
+```
+:::
+
+## Übung 2d: Einlesen mit `readr`
+
+Jetzt wollen wir den Datensatz noch einmal mit dem `readr`-Paket einlesen, das Teil des `tidyverse` ist. Die Funktionen darin haben fast die gleichen Namen wie die Funktionen in Base R, nur mit einem \_ statt mit einem Punkt: `read_csv` (für CSV) oder `read_delim` (für Dateien mit jeglichem Delimiter, also auch z.B. für tabseparierte Dateien oder für solche, in dem die Spalten mit einem Semikolon getrennt sind.) Laden Sie zunächst die `Tidyverse`-Paketfamilie und nutzen Sie dann die Funktion `read_csv`, um die CSV-Datei noch einmal einzulesen. Gern können Sie einfach wieder `d` als Objektname verwenden (unser altes Objekt `d` wird dann überschrieben).
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+# Tidyverse laden
+library(tidyverse)
+
+# Datei einlesen
+d <- read_csv("data/Weg_Kx.csv")
+
+
+```
+:::
+
+Probieren Sie nun aus, was passiert, wenn Sie einfach `d` in die Kommandozeile eingeben. Sie sehen, dass der Dataframe nun eine besondere Art von Dataframe ist, ein sog. Tibble:
+
+```{r, attr.output='.details summary="Output anzeigen"'}
+#| output: true
+
+d
+
+
+```
+
+Tibbles sind eine für das Tidyverse spezifische Datenstruktur. Mit den genauen Unterschieden zu Dataframes in Base R müssen wir uns an dieser Stelle nicht beschäftigen, wir sollten aber im Hinterkopf behalten, dass sie teilweise andere Eigenschaften als Base-R-Dataframes haben, was zu kleineren Unterschieden dahingehend führt, wie wir mit ihnen arbeiten können. Die meisten dieser Unterschiede sind aber für die basalen Operationen, um die es hier geht, irrelevant und zeigen sich eventuell bei komplexeren Operationen.
+
+## Übung 2e: Subsetting
+
+Jetzt wollen wir ein subset d_bahnen erstellen, das nur diejenigen Zeilen enthält, in denen das Verb *bahnen* lautet. Hier gibt es drei Möglichkeiten: Entweder wir nutzen die Syntax `dataframe[Zeile,Spalte]` oder wir nutzen die `subset()`-Funktion oder wir nutzen die im `tidyverse` - genauer: im Tidyverse-Paket `dplyr` - vorhandene `filter()`-Funktion. Letztere funktioniert ähnlich wie `subset()`, hat aber noch ein paar weitere praktische Funktionen (s. die Beispiele unter `?dplyr::filter`).
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+
+# Option 1: Syntax dataframe[Zeile, Spalte]:
+d_bahnen <- d[which(d$Verb=="bahnen"),]
+
+# Option 2: subset()
+d_bahnen <- subset(d, Verb == "bahnen")
+
+# Option 3: filter()
+d_bahnen <- filter(d, Verb == "bahnen")
+
+
+```
+:::
+
+## Übung 3a (schwer)
+
+Nun wollen wir einen etwas schwerer einzulesenden Datensatz einlesen, der sich nicht einfach mit `read.csv` einlesen lässt. Wir benutzen dafür den Datensatz umfrage-praesenzlehre.csv, der ebenfalls unter data/ zur Verfügung steht. Der Datensatz enthält (anonyme) Resultate einer authentischen Umfrage, in der Studierende nach ihren Präferenzen bzgl. Online- vs. Präsenzlehre befragt wurden.
+
+Informationen zum Datensatz:
+
+-   tabellarische Daten, Semikolon (;) als Spaltentrenner
+-   Encoding: ISO-8859-1 (Latin-1)
+-   Die Spalten haben Namen, einige davon sind aber mehrfach vergeben:
+    -   `Semesterzahl`
+    -   `Vorlesungen`
+    -   `Übungen`
+    -   `Tutorien`
+    -   `Seminare`
+    -   `Verfügbarkeit des CIP-Pools`
+
+Versuchen Sie zunächst, die Datei mit `read.csv` und/oder `read_csv` einzulesen. Was sagen uns die Fehlermeldungen?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+#| output: true
+#| error: true
+
+read.csv("data/umfrage-praesenzlehre.csv")
+
+read_csv("data/umfrage-praesenzlehre.csv")
+
+
+```
+
+Zugegeben: Die Fehlermeldung ist nicht unbedingt selbsterklärend. Die Lösung liegt in einer der oben aufgeführten Eigenschaften der Datei: R geht standardmäßig davon aus, dass Dateien, die eingelesen werden, die UTF-8 kodiert sind. UTF-8 ist einer von mehreren Standards zur Kodierung von Zeichen (wir dürfen nicht vergessen, dass ein Computer letztlich, vereinfacht gesagt, nur mit Einsen und Nullen umgehen kann und so etwas wie Buchstaben daher irgendwie kodiert werden müssen). Unsere Datei ist in Latin-1 kodiert.
+:::
+
+Wie können wir den Fehler beheben? Schauen Sie ggf. in die Hilfe von `?read.csv` bzw. `?read_csv` und suchen Sie in den Hilfe-Vignetten nach "encoding".
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+#| output: false
+#| error: false
+
+read.csv("data/umfrage-praesenzlehre.csv", fileEncoding = "latin1")
+
+read_csv("data/umfrage-praesenzlehre.csv", locale = locale(encoding = "Latin1"))
+
+
+```
+:::
+
+Nun werden Sie sehen, dass die Verarbeitung immer noch nicht ganz so klappt, wie wir das wollen. Woran liegt das?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+Es liegt natürlich daran, dass die Spalten hier nicht mit Kommata abgetrennt sind. (Wir erinnern uns: CSV steht für Comma-Separated Values.) Stattdessen sind sie, wie in der Beschreibung der Dateieigenschaften oben erwähnt, mit Semikola abgetrennt.
+:::
+
+Wir können die Funktion `read.table` (Base R) oder `read_delim` (Tidyverse) verwenden, um die Datei einzulesen. Dabei müssen wir den jeweiligen Spaltentrenner (Delimiter) angeben. Achtung: Bei `read.table` heißt das Argument dafür `sep`, bei `read_delim` heißt es `delim`. Denken Sie daran, auch das Encoding zu spezifizieren.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+read.table("data/umfrage-praesenzlehre.csv", sep = ";", fileEncoding = "latin1")
+
+read_delim("data/umfrage-praesenzlehre.csv", delim=";",  locale = locale(encoding = "latin1"))
+
+
+```
+:::
+
+Zur Erinnerung: Wenn wir die Dateien einfach nur mit einer der read-Funktionen einlesen, werden sie uns einfach nur in der Konsole angezeigt und verschwinden ansonsten im Limbo. Um weiter mit ihnen arbeiten zu können, müssen wir ihnen ein Objekt zuweisen. Lesen Sie die Datei nun bitte nochmal ein und weisen sie ihr den Namen `umfrage` zu. Verwenden Sie zunächst die Base-R-Funktion `read.table()`.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+umfrage <- read.table("data/umfrage-praesenzlehre.csv", sep = ";", fileEncoding = "latin1")
+
+
+```
+:::
+
+Schauen Sie sich die Spaltennamen an mit der Funktion `colnames()`. Was fällt auf? Wie können wir die "richtigen" Spaltennamen finden? Und wie können wir R dazu bringen, dass er die "richtigen" Spaltennamen auch als Spaltennamen in unserem Dataframe verwendet?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+#| output: true
+
+colnames(umfrage)
+
+
+```
+
+Wir sehen, dass R die Spaltennamen nicht aus der ersten Zeile des CSV-Sheet übernommen, sondern einfach durchnummeriert hat. Die Spaltennamen befinden sich nun in der ersten Zeile des Dataframe:
+
+```{r}
+#| output: true
+
+umfrage[1,]
+
+
+
+
+```
+
+Wir können die Spaltennamen jedoch manuell zuweisen, indem wir sagen, dass die erste Zeile als `colnames()` verwendet werden soll. Anschließend müssen wir die erste Zeile aus dem Dataframe löschen.
+
+```{r}
+
+# erste Zeile als Spaltennamen:
+colnames(umfrage) <- umfrage[1,]
+
+# erste Zeile löschen:
+umfrage <- umfrage[-1,]
+
+
+
+```
+
+Alternativ können wir mit der Option `header=TRUE` beim Einlesen der Datei schon sicherstellen, dass R weiß, dass die erste Zeile als Überschriften, also als Spaltennamen, behandelt werden soll.
+
+```{r}
+
+umfrage <- read.table("data/umfrage-praesenzlehre.csv", sep = ";", fileEncoding = "latin1", header = TRUE)
+
+```
+:::
+
+Lesen Sie nun die Dateien mit `read_delim` aus dem Tidyverse ein. Schauen Sie dann auf die Spaltennamen. Was ist anders?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+# Daten mit read_delim einlesen:
+umfrage <- read_delim("data/umfrage-praesenzlehre.csv", delim=";",  locale = locale(encoding = "latin1"))
+
+```
+
+```{r}
+#| output: true
+
+colnames(umfrage)
+
+```
+
+Wir sehen, dass die doppelten Spaltennamen automatisch desambiguiert werden, indem ihnen die Spaltennummer angehängt wird.
+:::
+
+## Übung 3b (wieder etwas leichter)
+
+Untersuchen Sie nun den Datensatz:
+
+-   Welche Spalten gibt es? Welche enthalten tatsächlich relevante Informationen?
+-   Wie viele Spalten gibt es? Welche enthalten tatsächlich relevante Informationen?
+-   Warum sind einige Spaltennamen doppelt vergeben?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+#| output: true
+
+# erste paar Zeilen anzeigen:
+head(umfrage)
+
+# Datenstruktur ausgeben:
+str(umfrage)
+
+# Überblick über die Daten mit skimr:
+skimr::skim(umfrage)
+
+# Spaltennamen anzeigen:
+colnames(umfrage)
+
+
+```
+
+Tipp: Man kann auch mit dem `View()`-Befehl bzw. einfach mit Klick auf das jeweilige Objekt im Environment den Dataframe anzeigen.
+
+```{r}
+#| eval: false
+
+View(umfrage)
+
+
+```
+:::
+
+## Übung 3c (wieder sehr schwer)
+
+Löschen Sie nun die doppelten Spalten. Tipp: Mit `duplicated()` können Sie doppelte Spaltennamen finden. Das wird zunächst nicht gelingen, weil die Spaltennamen desambiguiert sind. Mit `gsub("\\..*", "", colnames(umfrage))` können Sie aber alles, was in den Spaltennamen ab dem ersten Punkt kommt, löschen und damit die Original-Spaltennamen wiederherstellen, innerhalb derer Sie ebenfalls mit `duplicated` Duplikate erkennen können.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Hier zeige ich, wie sich das Ganze mit der Base-R-Variante machen lässt, mit den mit `read_delim` eingelesenen Daten sollte es aber genauso funktionieren.
+
+```{r}
+
+# Daten einlesen
+umfrage <- read.table("data/umfrage-praesenzlehre.csv", sep = ";", fileEncoding = "latin1", header = TRUE)
+
+
+```
+
+Hier zeige ich zunächst die einzelnen Bausteine, die wir brauchen und die ich dann im nächsten Code zusammensetzen werde:
+
+```{r}
+#| output: true
+
+# So zeigen wir die Spaltennamen an:
+colnames(umfrage)
+
+# Ersetzen-Befehl zum De-Desambiguieren der Spaltennamen:
+
+gsub("\\..*", "", colnames(umfrage))
+
+# Duplikate finden:
+duplicated(gsub("\\..*", "", colnames(umfrage)))
+
+# Position der Duplicate innerhalb der Spaltennamen finden:
+
+which(duplicated(gsub("\\..*", "", colnames(umfrage))))
+
+```
+
+Diesen which-Befehl können wir nun benutzen, um anhand der Position der doppelten Spalten diese Spalten zu löschen.
+
+```{r}
+
+# der Einfachheit halber speichere ich die Positionen erst in ein Objekt, um den Code lesbarer zu halten:
+positionen <- which(duplicated(gsub("\\..*", "", colnames(umfrage))))
+
+# so können wir die Spalten löschen:
+umfrage_clean <- umfrage[,-positionen]
+
+# alternativ können wir auch die which-Anfrage negativ formulieren, mit dem Negationsoperator !
+positionen_negiert <- which(!duplicated(gsub("\\..*", "", colnames(umfrage))))
+
+# und dann das Subset damit erstellen, was gegenüber der Syntax mit "-" einigen potentiellen Problemen vorbeugt:
+umfrage_clean <- umfrage[,positionen_negiert]
+
+```
+:::

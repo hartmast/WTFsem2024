@@ -1,0 +1,96 @@
+---
+title: "Übungen #0"
+author: "nach einer Vorlage von Andreas Blombach & Philipp Heinrich"
+output:
+  pdf_document
+  # html_document:
+  #   theme: readable
+  #   highlight: tango
+  #   toc: true
+  #   toc_float: true
+  #   fig_width: 10
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Vorbereitung
+
+Die folgenden Methoden sind für diese Übung nützlich - sehen Sie sich ggf. die Hilfefunktion zu den jeweiligen Funktionen an:
+
+-   `read_delim()` (`readr`)
+-   `select()` and `mutate()` (`dplyr`)
+-   `complete.cases()`
+-   `table()`
+
+## Daten
+
+Wir benutzen den Datensatz `umfrage-praesenzlehre.csv`, der unter data/ zur Verfügung steht. Der Datensatz enthält (anonyme) Resultate einer authentischen Umfrage, in der Studierende nach ihren Präferenzen bzgl. Online- vs. Präsenzlehre befragt wurden.
+
+## Task #1
+
+Lesen Sie den Datensatz ein.
+
+-   tabellarische Daten, Semikolon (;) als Spaltentrenner
+-   Encoding: ISO-8859-1 (Latin-1)
+-   Die Spalten haben Namen, einige davon sind aber mehrfach vergeben:
+    -   `Semesterzahl`
+    -   `Vorlesungen`
+    -   `Übungen`
+    -   `Tutorien`
+    -   `Seminare`
+    -   `Verfügbarkeit des CIP-Pools`
+
+Untersuchen Sie den Datensatz:
+
+-   Welche Spalten gibt es? Welche enthalten tatsächlich relevante Informationen?
+-   Wie viele Spalten gibt es? Welche enthalten tatsächlich relevante Informationen?
+-   Warum sind einige Spaltennamen doppelt vergeben?
+
+Löschen Sie Zeilen und Spalten, die keine relevanten Informationen enthalten.
+
+## Task #2
+
+Wir interessieren uns hier für die Antworten auf die Frage, ob die Studierenden Online- oder Präsenzlehre bevorzugen. Die Antworten werden für jeden Veranstaltungstyp getrennt gegeben:
+
+-   `Vorlesungen`
+-   `Übungen`
+-   `Tutorien`
+-   `Seminare`
+
+Wie bereits erwähnt, gibt es zwei Spalten für jeden dieser Namen. Wählen Sie davon diejenigen Spalten aus, die characters als Werte enthalten, und wandeln Sie die Werte in der jeweiligen Spalte zu ordinalen Faktoren um. Die korrekte Reihenfolge der Faktoren-Levels ist
+
+1.  definitiv online
+2.  lieber online
+3.  keine Präferenz
+4.  lieber in Präsenz
+5.  definitiv in Präsenz
+
+(Oder umgekehrt.) Alle anderen Werte können als missing values deklariert werden (`NA`).
+
+## Task #3
+
+Beschreiben Sie für jeden Kurstyp die Distribution der Präferenzen der Studierenden. Gibt es einen klaren "Sieger", d.h. bevorzugen die meisten Studierenden einen Kurstyp?
+
+## Task #4
+
+Es gibt eine weitere Spalte (ebenfalls doppelt vorhanden) `Verfügbarkeit des CIP-Pools`, in der es darum geht, ob für die Studierenden die Verfügbarkeit des PC-Pools wichtig ist. Auch hier rekodieren Sie bitte die character-Spalte als ordinalen Faktor mit folgender Reihenfolge der Variablenausprägungen:
+
+1.  sehr wichtig
+2.  wichtig
+3.  egal
+4.  nicht so wichtig
+5.  irrelevant
+
+Wie bei Task #3 beschreiben Sie bitte die Distribution
+
+## Task #5
+
+Die (ebenfalls doppelte) Spalte `Semesterzahl` enthält die einzige "demographische" Vrariavle: das Semester, in dem sich die Studierenden befinden.
+
+-   Rekodieren Sie die Spalte als ordinaler Faktor.
+-   Beschreiben Sie die Distribution.
+
+Lassen sich Unterschiede zwischen Studierenden in frühen und späteren Semestern feststellen?
