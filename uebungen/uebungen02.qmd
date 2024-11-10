@@ -1,0 +1,222 @@
+---
+title: "Übungen zu regulären Ausdrücken"
+execute:
+  echo: true
+  output: false
+format: html
+filters:
+  - quarto
+  - line-highlight
+  - fold_results
+editor: visual
+---
+
+Im Folgenden wollen wir uns vertiefter mit regulären Ausdrücken (Regular Expressions, kurz Regex) beschäftigen. Eine hervorragende Ressource, um einen ersten Überblick über Regex zu bekommen, ist die Seite <https://www.regular-expressions.info/>.
+
+## Übung 1
+
+Erstellen Sie ein Objekt mit dem Namen `wiesel` , das folgendes Gedicht von Christian Morgenstern in einem einzigen character string enthält:
+
+> **Das ästhetische Wiesel**<br><br>Ein Wiesel<br>saß auf einem Kiesel<br>inmitten Bachgeriesel.<br>Wißt ihr<br>weshalb?<br><br>Das Mondkalb<br>verriet es mir<br>im Stillen:<br><br> Das raffinier-<br>te Tier<br>tat's um des Reimes willen.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+wiesel <- "Das ästhetische Wiesel
+
+Ein Wiesel
+saß auf einem Kiesel
+inmitten Bachgeriesel.
+Wißt ihr
+weshalb?
+
+Das Mondkalb
+verriet es mir
+im Stillen:
+
+Das raffinier-
+te Tier
+tat’s um des Reimes willen."
+
+```
+:::
+
+Schauen Sie sich nun das erstellte Objekt an, indem Sie es in der Kommandozeile ausführen. Was sehen Sie?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+#| output: true
+
+wiesel
+
+```
+
+Wir sehen, dass das Gedicht nun in einer Zeile ausgegeben wird. Die Zeilenumbrüche werden mit der sog. Escape-Sequenz \\n (für "newline") dargestellt.
+:::
+
+## Übung 2
+
+Nutzen Sie die Funktion `strsplit`, um das Gedicht in seine einzelnen Zeilen zu splitten. Die `strsplit`-Funktion nimmt folgende Argumente: `x` ist der character vector, den wir splittten wollen, `split` ist ein regulärer Ausdruck, der angibt, an welcher Stelle bzw. an welchen Stellen wir splitten wollen. Sehen Sie sich gern auch die Hilfe unter `?strsplit` an. Achten Sie auch darauf, welche Art von Output die Funktion **`strsplit`** liefert.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+strsplit(wiesel, "\n")
+
+```
+:::
+
+## Übung 3
+
+Erstellen Sie einen Vektor namens `wiesel_vector`, der die via `strsplit` erstellten einzelnen Zeilen des Gedichts als Vektor enthält. Achten Sie dabei darauf, dass **`strsplit`** keine Vektoren, sondern Listen ausgibt. Sie können die Funktion `unlist` verwenden, um eine Liste in einen Vektor zu überführen.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+wiesel_vector <- unlist(strsplit(wiesel, "\n"))
+
+```
+:::
+
+## Übung 4
+
+Der Vektor enthält einige leere Elemente (`""`). Bitte löschen Sie alle leeren Elemente aus dem Vektor.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+Um die leeren Elemente zu löschen, nehmen wir ein Subset des Vektors und behalten nur diejenigen Elemente, die nicht gleich `""` sind.
+
+```{r}
+wiesel_vector <- wiesel_vector[which(wiesel_vector!="")]
+```
+:::
+
+## Übung 5
+
+Bitte finden Sie heraus, mit welchem regulären Ausdruck man alle Satzzeichen finden kann. Anschließend nutzen Sie den Befehl `gsub`, um alle Satzzeichen aus dem Vektor `wiesel_vector` zu löschen.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Satzzeichen finden wir mit dem regulären Ausdruck `[[:punct:]]`. 
+
+```{r}
+
+wiesel_vector <- gsub("[[:punct:]]", "", wiesel_vector)
+
+```
+
+
+:::
+
+## Übung 6 (etwas schwerer)
+
+Nun wollen wir dafür sorgen, dass das jeweils erste Wort jedes Vektors mit einem Kleinbuchstaben beginnt. Tipp: Mit der Funktion `tolower` konvertieren Sie einen character string mit Großbuchstaben in einen, der nur Kleinbuchstaben enthält. Noch ein Tipp: Wir haben oben gesehen, dass wir mit `unlist(strsplit(...))` die character strings aufsplitten können. Mit `paste0` können wir sie auch wieder zusammensetzen. Konsultieren Sie ggf. die Hilfefunktion der genannten Funktionen.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Wir können einen Loop schreiben, der die einzelnen Zeilen mit `strsplit` aufsplittet, das erste Wort mit `tolower` ersetzt und das Ganze dann mit `paste0` wieder zusammenfügt.
+
+Schauen wir uns zunächst an, wie das für einen einzigen String, nämlich den ersten, funktioniert:
+
+```{r}
+
+# der aktuelle Vektor:
+cur_vec <- unlist(strsplit(wiesel_vector[1], " "))
+
+# im aktuellen Vektor das erste Wort klein machen:
+cur_vec[1] <- tolower(cur_vec[1])
+
+# den Vektor wieder zusammenpasten; mit collapse = " " stellen wir sicher, dass ein Leerzeichen zwischen die Wörter kommt und kein anderes Zeichen:
+cur_vec <- paste0(cur_vec, collapse = " ")
+
+```
+
+```{r}
+#| output: true
+
+# überprüfen, dass alles geklappt hat
+cur_vec
+
+```
+
+Das Ganze können wir nun in einen Loop überführen. Hier können wir fast alles von oben copy&pasten, müssen die `[1]`, die sich auf die Position im `wiesel_vector` bezieht, durch unseren Iterator - hier `i` - ersetzen und müssen dann nur noch daran denken, den jeweiligen String im Gesamtvektor durch unseren aktuellen Vektor zu ersetzen. 
+
+```{r}
+
+for(i in 1:length(wiesel_vector)) {
+  # der aktuelle Vektor:
+cur_vec <- unlist(strsplit(wiesel_vector[i], " "))
+
+# im aktuellen Vektor das erste Wort klein machen:
+cur_vec[1] <- tolower(cur_vec[1])
+
+# den Vektor wieder zusammenpasten
+cur_vec <- paste0(cur_vec, collapse = " ")
+
+# den String im Gesamtvektor durch den aktuellen String ersetzen:
+wiesel_vector[i] <- cur_vec
+
+}
+
+```
+
+Nun können wir schauen, ob alles geklappt hat:
+
+```{r}
+#| output: true
+
+wiesel_vector
+```
+
+
+:::
+
+## Übung 7
+
+Wir wollen nun den Text in einen Dataframe überführen, dem wir dann weitere Spalten mit (automatischer) Annotation hinzufügen können. Erstellen Sie bitte einen Dataframe (mit `data.frame`) namens `wiesel_df`, der nur eine Spalte mit dem Namen "Text" enthält, in der sich unser `wiesel_vector` befindet.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+wiesel_df <- data.frame(Text = wiesel_vector)
+
+```
+
+:::
+
+## Übung 8 (etwas schwerer)
+
+Nun wollen wir eine Annotationsspalte hinzufügen, in der wir automatisch angeben, ob der Text in der jeweiligen Tabellenzeile ein Substantiv enthält (Namensvorschlag für die zu erstellende neue Spalte: `mit_Substantiv`). Finden Sie dafür heraus, wie man Großbuchstaben mit regulären Ausdrücken erkennt, und nutzen Sie die Suchfunktion `grep`, um nach großgeschriebenen Wörtern in den Tabellen- und damit Gedichtzeilen zu suchen. Tipp: Mit der Funktion `grepl` können Sie sich statt der Position der Suchtreffer für jedes Element in einem Vektor (oder einer Dataframe-Spalte) ausgegeben lassen, ob das gesuchte Element dort gefunden wurde oder nicht.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+```{r}
+
+# so finden wir heraus, ob ein Großbuchstabe gefunden wurde:
+grepl("[A-Z]", wiesel_df$Text)
+
+# so fügen wir das Ganze als neue Spalte zum existierenden Dataframe hinzu:
+wiesel_df$mit_Substantiv <- grepl("[A-Z]", wiesel_df$Text)
+
+```
+
+
+:::
+
+## Übung 9
+
+Jetzt wollen wir alle Substantive aus unserem Vektor extrahieren. Tipp: Hierfür bietet es sich an, den Text zunächst in Einzelwörter aufzuspalten.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+# Text in Einzelwörter aufspalten
+wiesel_woerter <- unlist(strsplit(wiesel_df$Text, " "))
+
+# Wörter finden, die mit einem Großbuchstaben beginnen:
+# ^ gibt an, dass der gesuchte String am Anfang stehen muss. (Hier prinzipiell nicht notwenig, da im Deutschen Großbuchstaben in aller Regel nur am Wortanfang stehen können, mit wenigen Ausnahmen). Mit value = T geben wir an, dass wir statt der Positionen im Vektor die tatsächlichen Werte ausgegeben bekommen wollen.
+grep("^[A-Z]", wiesel_woerter, value = T)
+
+```
+
+
+:::
+ 

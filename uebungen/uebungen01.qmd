@@ -377,7 +377,6 @@ View(umfrage)
 Löschen Sie nun die doppelten Spalten. Tipp: Mit `duplicated()` können Sie doppelte Spaltennamen finden. Das wird zunächst nicht gelingen, weil die Spaltennamen desambiguiert sind. Mit `gsub("\\..*", "", colnames(umfrage))` können Sie aber alles, was in den Spaltennamen ab dem ersten Punkt kommt, löschen und damit die Original-Spaltennamen wiederherstellen, innerhalb derer Sie ebenfalls mit `duplicated` Duplikate erkennen können.
 
 ::: {.callout-tip title="Lösung" collapse="true"}
-
 Hier zeige ich, wie sich das Ganze mit der Base-R-Variante machen lässt, mit den mit `read_delim` eingelesenen Daten sollte es aber genauso funktionieren.
 
 ```{r}
@@ -427,3 +426,5 @@ umfrage_clean <- umfrage[,positionen_negiert]
 
 ```
 :::
+
+Haben Sie Lust auf weitere Übungen bekommen? [Hier](https://hartmast.github.io/WTFsem2024/uebungen/uebungen02.html) geht es weiter!
