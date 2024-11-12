@@ -428,3 +428,5 @@ umfrage_clean <- umfrage[,positionen_negiert]
 :::
 
 Haben Sie Lust auf weitere Übungen bekommen? [Hier](https://hartmast.github.io/WTFsem2024/uebungen/uebungen02.html) geht es weiter!
+
+[🔙 Zurück zur Übersicht](uebungen_uebersicht.html)

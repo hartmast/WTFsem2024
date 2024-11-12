@@ -95,16 +95,13 @@ wiesel_vector <- wiesel_vector[which(wiesel_vector!="")]
 Bitte finden Sie heraus, mit welchem regulären Ausdruck man alle Satzzeichen finden kann. Anschließend nutzen Sie den Befehl `gsub`, um alle Satzzeichen aus dem Vektor `wiesel_vector` zu löschen.
 
 ::: {.callout-tip title="Lösung" collapse="true"}
-
-Satzzeichen finden wir mit dem regulären Ausdruck `[[:punct:]]`. 
+Satzzeichen finden wir mit dem regulären Ausdruck `[[:punct:]]`.
 
 ```{r}
 
 wiesel_vector <- gsub("[[:punct:]]", "", wiesel_vector)
 
 ```
-
-
 :::
 
 ## Übung 6 (etwas schwerer)
@@ -112,7 +109,6 @@ wiesel_vector <- gsub("[[:punct:]]", "", wiesel_vector)
 Nun wollen wir dafür sorgen, dass das jeweils erste Wort jedes Vektors mit einem Kleinbuchstaben beginnt. Tipp: Mit der Funktion `tolower` konvertieren Sie einen character string mit Großbuchstaben in einen, der nur Kleinbuchstaben enthält. Noch ein Tipp: Wir haben oben gesehen, dass wir mit `unlist(strsplit(...))` die character strings aufsplitten können. Mit `paste0` können wir sie auch wieder zusammensetzen. Konsultieren Sie ggf. die Hilfefunktion der genannten Funktionen.
 
 ::: {.callout-tip title="Lösung" collapse="true"}
-
 Wir können einen Loop schreiben, der die einzelnen Zeilen mit `strsplit` aufsplittet, das erste Wort mit `tolower` ersetzt und das Ganze dann mit `paste0` wieder zusammenfügt.
 
 Schauen wir uns zunächst an, wie das für einen einzigen String, nämlich den ersten, funktioniert:
@@ -138,7 +134,7 @@ cur_vec
 
 ```
 
-Das Ganze können wir nun in einen Loop überführen. Hier können wir fast alles von oben copy&pasten, müssen die `[1]`, die sich auf die Position im `wiesel_vector` bezieht, durch unseren Iterator - hier `i` - ersetzen und müssen dann nur noch daran denken, den jeweiligen String im Gesamtvektor durch unseren aktuellen Vektor zu ersetzen. 
+Das Ganze können wir nun in einen Loop überführen. Hier können wir fast alles von oben copy&pasten, müssen die `[1]`, die sich auf die Position im `wiesel_vector` bezieht, durch unseren Iterator - hier `i` - ersetzen und müssen dann nur noch daran denken, den jeweiligen String im Gesamtvektor durch unseren aktuellen Vektor zu ersetzen.
 
 ```{r}
 
@@ -166,8 +162,6 @@ Nun können wir schauen, ob alles geklappt hat:
 
 wiesel_vector
 ```
-
-
 :::
 
 ## Übung 7
@@ -180,7 +174,6 @@ Wir wollen nun den Text in einen Dataframe überführen, dem wir dann weitere Sp
 wiesel_df <- data.frame(Text = wiesel_vector)
 
 ```
-
 :::
 
 ## Übung 8 (etwas schwerer)
@@ -197,8 +190,6 @@ grepl("[A-Z]", wiesel_df$Text)
 wiesel_df$mit_Substantiv <- grepl("[A-Z]", wiesel_df$Text)
 
 ```
-
-
 :::
 
 ## Übung 9
@@ -206,7 +197,6 @@ wiesel_df$mit_Substantiv <- grepl("[A-Z]", wiesel_df$Text)
 Jetzt wollen wir alle Substantive aus unserem Vektor extrahieren. Tipp: Hierfür bietet es sich an, den Text zunächst in Einzelwörter aufzuspalten.
 
 ::: {.callout-tip title="Lösung" collapse="true"}
-
 ```{r}
 # Text in Einzelwörter aufspalten
 wiesel_woerter <- unlist(strsplit(wiesel_df$Text, " "))
@@ -216,7 +206,6 @@ wiesel_woerter <- unlist(strsplit(wiesel_df$Text, " "))
 grep("^[A-Z]", wiesel_woerter, value = T)
 
 ```
-
-
 :::
- 
+
+[🔙 Zurück zur Übersicht](uebungen_uebersicht.html)
