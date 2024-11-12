@@ -1,0 +1,341 @@
+---
+title: "Übungen zu grundlegenden Operationen in R"
+execute:
+  echo: true
+  output: false
+format: html
+filters:
+  - quarto
+  - line-highlight
+  - fold_results
+editor: source
+---
+
+In dieser Übung wollen wir uns noch einmal mit grundlegenden Operationen in R auseinandersetzen und eine gewisse Sensibilität für häufige Anfängerfehler entwickeln.
+
+## Übung 1
+
+Angenommen, Sie wollen mehr über die Base-R-Funktion `lm` herausfinden. Wie können Sie sich die Hilfe anzeigen lassen?
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+?lm
+# oder:
+help(lm)
+```
+
+:::
+
+
+## Übung 2
+
+Installieren Sie das über CRAN verfügbare (d.h. einfach mit `install.packages` zu installierende) Paket `swirl` und laden Sie es anschließend.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+#| eval: false
+
+# installieren:
+install.packages("swirl")
+
+# laden:
+library(swirl)
+
+# oder:
+require(swirl)
+
+```
+
+Tipp: Wenn Sie nicht wissen, ob ein Paket schon installiert ist, können Sie das herausfinden mit
+
+```{r}
+is.element("swirl", installed.packages())
+```
+
+Übrigens ist `swirl` ein sehr nettes Paket, um interaktiv R zu lernen. Wenn Sie `swirl()` eingeben, können Sie sich in der Konsole durch verschiedene einfache Übungen navigieren.
+
+:::
+
+## Übung 3
+
+Der folgende Loop soll das `n` in *Ich bin n Berliner* durch alle Zahlen von 1 bis 10 ersetzen. Allerdings funktioniert er nicht so, wie er soll. Warum nicht?
+
+```{r}
+zahlen <- c(1,3,5,7,9)
+
+for(i in zahlen) {
+  print(paste0("Ich bin ", zahlen[i], " Berliner"))
+}
+
+```
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Das liegt daran, dass der Loop über die Zahlen im Vektor `zahlen` iteriert: 1,3,5,7,9. In der Funktion selbst wird aber das i-te Element des Vektors `zahlen` angesteuert - und solange i die Zahlen im Vektor ansteuert, sind das also das erste, dritte, fünfte, siebte und neunte Element des Vektors! Nun hat der Vektor aber nur `{r} length(zahlen)` Elemente. Deshalb gibt es zwei Möglichkeiten, den Code zu korrigieren:
+
+```{r}
+
+# a) wir geben im Code an, dass wir nicht das i-te
+# Element haben wollen, sondern vielmehr i 
+# einsetzen möchten:
+
+for(i in zahlen) {
+  print(paste0("Ich bin ", i, " Berliner"))
+}
+
+# b) Wir ändern den Iterator i, sodass er nicht mehr
+# für die Werte im Vektor "Zahlen" steht, sondern 
+#vielmehr für die i-te Position innerhalb des 
+# Vektors:
+for(i in 1:length(zahlen)) {
+  print(paste0("Ich bin ", zahlen[i], " Berliner"))
+}
+
+```
+
+:::
+
+
+## Übung 4
+
+Wir wollen herausfinden, ob die Quadratwurzel von 25 5 ist. Der folgende Code funktioniert nicht.
+
+```{r}
+#| output: true
+#| error: true
+
+sqrt(25) = 5
+
+```
+
+Warum nicht? Bitte korrigieren Sie den Code.
+
+::: {.callout-tip title="Lösung" collapse="true"}
+Das einfache Gleichheitszeichen fungiert als Zuweisungsoperator (ähnlich zu `<-`, wenn auch nicht 100% deckungsgleich.) Um zwei Objekte auf Gleichheit zu überprüfen, benötigen wir das doppelte Gleichheitszeichen.
+
+```{r}
+#| output: TRUE
+
+sqrt(25) == 5
+
+```
+
+:::
+
+
+## Übung 5 (etwas schwerer)
+
+Wir erstellen drei Vektoren:
+
+```{r}
+
+spd <- c("Scholz", "Pistorius", "Schwesig", "Lauterbach", "Faeser")
+cdu <- c("Merz", "Linnemann", "Spahn", "Prien", "Klöckner")
+
+namen <- c("Lindner", "Wagenknecht", "Scholz", "Spahn", "Pistorius", "Linnemann", "Buschmann", "Schwesig", "Prien", "Lauterbach", "Weidel", "Faeser", "Klöckner")
+
+```
+
+Schreiben Sie einen Loop, der immer dann, wenn eine Person im Vektor `namen` in der SPD ist, "SPD" ausgibt und immer dann, wenn sie in der CDU ist, "CDU".
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+```{r}
+
+# die basale Lösung ist folgende:
+for(i in namen) {
+  if(i %in% spd) {
+    print("SPD")
+  } else if (i %in% cdu) {
+    print("CDU")
+  }
+}
+
+
+# noch schöner ist es natürlich, wenn wir die Namen mit ausgeben:
+
+for(i in namen) {
+  
+  # erst den jeweiligen Namen printen:
+  print(i)
+  
+  
+  # dann, falls zutreffend, SPD oder CDU:
+  if(i %in% spd) {
+    print("SPD")
+  } else if(i %in% cdu) {
+    print("CDU")
+  }
+}
+
+```
+
+Wenn wir es noch schöner haben wollen, können wir natürlich die Parteizugehörigkeit auch mit der `paste`-Funktion hinter den Namen in Klammern setzen:
+
+```{r}
+
+for(i in namen) {
+  if(i %in% spd) {
+    print(paste0(i, " (SPD)") )
+  } else if(i %in% cdu) {
+    print(paste0(i, " (CDU)"))
+  # zusätzliches else-Statement, um auch die Namen
+  # derer zu printen, die weder in der SPD noch
+  # in der CDU sind:
+  } else {
+    print(i)
+  }
+}
+
+```
+
+
+
+:::
+
+Nun wollen wir aus den Namen noch einen Dataframe erstellen, der wie folgt aussieht:
+
+```{r}
+#| echo: false
+#| output: true
+
+df <- data.frame(Name = namen)
+
+# leere Spalte für Parteizugehörigkeit:
+df$Partei <- NA
+
+# Loop:
+for(i in 1:nrow(df)) { # loopen über 1 bis Anzahl der Spalten unseres Dataframes
+  if(df$Name[i] %in% spd) {
+    df$Partei[i] <- "SPD"
+  } else if (df$Name[i] %in% cdu) {
+    df$Partei[i] <- "CDU"
+  }
+}
+
+df
+
+```
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Es gibt mehrere Möglichkeiten - mit dem bisher Gelernten können wir es wie folgt machen:
+
+```{r}
+df <- data.frame(Name = namen)
+
+# leere Spalte für Parteizugehörigkeit:
+df$Partei <- NA
+
+# Loop:
+for(i in 1:nrow(df)) { # loopen über 1 bis Anzahl der Spalten unseres Dataframes
+  if(df$Name[i] %in% spd) {
+    df$Partei[i] <- "SPD"
+  } else if (df$Name[i] %in% cdu) {
+    df$Partei[i] <- "CDU"
+  }
+}
+```
+
+Alternativ können wir auch die nützliche Funktion `case_when` aus dem Tidyverse verwenden. `case_when` funktioniert wie die ebenfalls sehr nützliche Funktion `ifelse`, die wir bei nur zwei Alternativen verwenden können (sehen Sie sich ggf. `?ifelse` an), lässt sich aber auf beliebig viele Alternativen anwenden und erlaubt auch, einen "Default"-Wert mit `.default` zu definieren.
+
+```{r}
+
+library(tidyverse)
+
+df <- data.frame(Name = namen)
+
+# mit case_when ergänzen:
+df$Partei <- case_when(df$Name %in% spd ~ "SPD",
+          df$Name %in% cdu ~ "CDU",
+          .default = "Andere")
+
+```
+
+```{r}
+#| output: true
+df
+```
+
+
+
+:::
+
+
+Abschließend wollen wir noch die Nicht-SPD/CDU-Politiker*innen ihren jeweiligen Parteien zuordnen. Hier ein Code dafür, der aber noch Fehler enthält. Können Sie die Fehler finden und beheben?
+
+```{r}
+#| error: true
+
+for(i in 1:nrow(df)) {
+  if(df$Name[i] %in% c("Lindner", "Buschmann")) {
+    df$Partei[i] <- "FDP"
+  } else if(df$Name=="Wagenknecht") {
+    df$Partei[i] <- "BSW"
+  } else if(df$Name=="Weidel") {
+    df$Partei[i] <- "AfD"
+  }
+}
+```
+
+
+::: {.callout-tip title="Lösung" collapse="true"}
+
+Die Fehlermeldung sagt es uns bereits: `Error in if (df$Name == "Wagenknecht") { : the condition has length > 1` - wir haben statt einem Element des Vektors (d.h. der Dataframe-Spalte) `df$Name` den gesamten Vektor `df$Name` angesteuert. Wir müssen aber mit `[i]` ein einzelnes Element auswählen:
+
+```{r}
+
+for(i in 1:nrow(df)) {
+  if(df$Name[i] %in% c("Lindner", "Buschmann")) {
+    df$Partei[i] <- "FDP" 
+  } else if(df$Name[i]=="Wagenknecht") { #<<
+    df$Partei[i] <- "BSW"
+  } else if(df$Name[i]=="Weidel") { #<<
+    df$Partei[i] <- "AfD"
+  }
+}
+
+```
+
+```{r}
+#| output: true
+
+df
+```
+
+
+:::
+
+
+## Übung 6
+
+Finden Sie den Fehler im folgenden Code.
+
+```{r}
+#| eval: false
+#| error: true
+
+a <- 2
+b <- "3"
+
+a + b
+
+```
+
+::: {.callout-tip title="Lösung" collapse="true"}
+a + b lassen sich nicht addieren, da b als character formatiert ist. Lässt man die Anführungszeichen weg, die die 3 oben als character ausweist, funktioniert es:
+
+```{r}
+
+a <- 2
+b <- 3
+
+a + b
+
+
+```
+
+:::
+

@@ -8,7 +8,7 @@ filters:
   - quarto
   - line-highlight
   - fold_results
-editor: visual
+editor: source
 ---
 
 Im Folgenden wollen wir uns vertiefter mit regulären Ausdrücken (Regular Expressions, kurz Regex) beschäftigen. Eine hervorragende Ressource, um einen ersten Überblick über Regex zu bekommen, ist die Seite <https://www.regular-expressions.info/>.
