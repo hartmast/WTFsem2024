@@ -19,7 +19,7 @@ library(performance)
 
 # Data from https://tspace.library.utoronto.ca/handle/1807/10395;
 # version used here from McElreath (2020): https://github.com/rmcelreath/rethinking/blob/master/data/Howell1.csv
- hw <- read_csv("data/howell.csv")
+hw <- read_csv("data/howell.csv")
 # hw <- read_delim("https://raw.githubusercontent.com/rmcelreath/rethinking/master/data/Howell1.csv", 
 #                 delim = ";")
 
@@ -39,9 +39,24 @@ str(hw)
 # visualization: scatterplot
 with(hw, plot(weight, height))
 
+# =
+plot(hw$weight, hw$height)
+
 # visualization: histogram
 hist(hw$height)
 hist(hw$height, probability = T)
+
+# why do the barplots not sum up to 1?
+# Well, the area of the histogram is in fact 1 - but
+# the bars have a width of 5:
+hist(hw$height, probability = T, plot = F)$breaks
+
+# so the sum density of the bars...
+hist(hw$height, probability = T, plot = F)$density %>% sum
+
+# ... has to be multiplied by 5 to get 1!
+(hist(hw$height, probability = T, plot = F)$density %>% sum) * 5
+
 lines(density(hw$height), col = "red", lwd = 2)
 
 # back to scatterplot
@@ -75,8 +90,9 @@ b <- coef(m01)[2]
 # Regression line through scatterplot from original data...
 # x and y limits are adjusted so that we see the
 # intercept (x = 0)
-with(hw, plot(weight, height, col = "lightgrey", xlim = c(-10, 65),
+with(hw, plot(weight, height, col = "lightgrey", xlim = c(0, 65),
               ylim = c(110, 180)))
+abline(a,b)
 abline(a = a, b = b)
 abline(m01)
 points(x = 0, y = a, pch = 15, cex = 3, col = "orange") # intercept
@@ -103,7 +119,7 @@ resid(m01) %>% max
 # are points in the data below which a certain
 # proportion of our data fall. For example,
 # none of our data is smaller than -19.7,
-# 25% arte below 2.88, 50% are below 0.02, etc.
+# 25% are below -2.88, 50% are below 0.02, etc.
 resid(m01) %>% quantile() 
 
 resid(m01) %>% sort %>% plot(type = "n")
